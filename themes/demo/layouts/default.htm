@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Organic Ranking - {{ this.page.title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% styles %}
+        <link href="{{ 'assets/css/theme.css'|theme }}" rel="stylesheet">
+    </head>
+    <body>
+
+        <!-- Header -->
+        <header id="layout-header" style="background: #333; color: #fff; padding: 15px 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto;">
+                <div>
+                    <a href="{{ 'links'|page }}" 
+                       data-request="onSearch" 
+                       data-request-data="search: ''" 
+                       data-request-update="'organicLinks::default': '#link-list'"
+                       onclick="if(document.getElementById('search-input')) document.getElementById('search-input').value='';"
+                       style="color: #fff; text-decoration: none; font-size: 24px; font-weight: bold;">
+                        Organic Ranking
+                    </a>
+                </div>
+                <div>
+                    <form data-request="onSearch" data-request-update="'organicLinks::default': '#link-list'" style="margin: 0;">
+                        <input type="text" id="search-input" name="search" placeholder="Buscar enlaces..." style="padding: 6px 12px; border-radius: 4px; border: 1px solid #ccc;">
+                        <button type="submit" style="padding: 6px 12px; border-radius: 4px; border: none; background: #007bff; color: white; cursor: pointer;">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <section id="layout-content" style="max-width: 1200px; margin: 20px auto; padding: 0 20px;">
+            {% page %}
+        </section>
+
+        <!-- Scripts -->
+        <script src="{{ 'assets/javascript/jquery.js'|theme }}"></script>
+        <script src="{{ 'assets/javascript/app.js'|theme }}"></script>
+        {% framework extras %}
+        {% scripts %}
+
+    </body>
+</html>

@@ -1,0 +1,17 @@
+url = "/links"
+layout = "default"
+title = "Organic Ranking"
+
+[organicLinks]
+==
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid #ddd; padding-bottom: 10px;">
+    <h1 style="margin: 0; font-size: 24px;">Organic Ranking</h1>
+    <div>
+        <form data-request="onSearch" data-request-update="'@default': '#link-list'">
+            <input type="text" name="search" placeholder="Buscar enlaces..." style="padding: 5px 10px;">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+</div>
+
+{% component 'organicLinks' %}

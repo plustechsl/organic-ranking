@@ -1,0 +1,35 @@
+<div style="margin-bottom: 30px; border: 1px solid #ccc; padding: 15px;">
+    <h3>Añadir un enlace</h3>
+    <form data-request="onCreateLink" data-request-flash>
+        <div style="margin-bottom: 10px;">
+            <label>Título:</label><br>
+            <input type="text" name="title" required style="width: 100%;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label>URL:</label><br>
+            <input type="url" name="url" required style="width: 100%;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label>Descripción:</label><br>
+            <textarea name="description" style="width: 100%;"></textarea>
+        </div>
+        <button type="submit">Guardar Enlace</button>
+    </form>
+</div>
+
+<div id="link-list">
+    {% for link in __SELF__.links %}
+        <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+            <h3><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></h3>
+            <p>{{ link.description }}</p>
+            <p>Votos: <strong>{{ link.votes_count }}</strong></p>
+            <button 
+                data-request="onVote" 
+                data-request-data="link_id: {{ link.id }}">
+                Votar
+            </button>
+        </div>
+    {% else %}
+        <p>No hay enlaces disponibles.</p>
+    {% endfor %}
+</div>
