@@ -1,0 +1,17 @@
+<div class="list-group">
+    {% for link in links %}
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <a href="{{ link.url }}" target="_blank" class="fw-bold text-decoration-none">{{ link.title }}</a>
+                <p class="mb-0 text-muted small">{{ link.description }}</p>
+            </div>
+            <div>
+                <button data-request="onVote" data-request-data="link_id: {{ link.id }}" class="btn btn-outline-primary btn-sm">
+                    ▲ {{ link.votes_count }}
+                </button>
+            </div>
+        </div>
+    {% else %}
+        <div class="list-group-item text-muted">No hay enlaces en esta lista.</div>
+    {% endfor %}
+</div>

@@ -1,0 +1,30 @@
+url = "/login"
+layout = "default"
+title = "Iniciar Sesión"
+
+[account]
+paramCode = "code"
+redirect = "/perfil"
+==
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <h5 class="card-title mb-0">Iniciar Sesión</h5>
+            </div>
+            <div class="card-body">
+                <form data-request="onSignin" data-request-flash>
+                    <div class="mb-3">
+                        <label class="form-label">Email o Usuario</label>
+                        <input name="login" type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Contraseña</label>
+                        <input name="password" type="password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

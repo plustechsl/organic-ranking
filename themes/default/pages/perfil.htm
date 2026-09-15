@@ -1,0 +1,67 @@
+url = "/perfil"
+layout = "default"
+title = "Mi Perfil"
+
+[account]
+paramCode = "code"
+
+[listList myLists]
+userOnly = 1
+
+[listForm]
+==
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <h5 class="card-title mb-0">Datos de la Cuenta</h5>
+            </div>
+            <div class="card-body">
+                {% if user %}
+                    <form data-request="onUpdate" data-request-flash>
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input name="name" type="text" class="form-control" value="{{ user.name }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input name="email" type="email" class="form-control" value="{{ user.email }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nueva Contraseña</label>
+                            <input name="password" type="password" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Confirmar Contraseña</label>
+                            <input name="password_confirmation" type="password" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </form>
+                {% else %}
+                    <div class="alert alert-warning">Inicia sesión para ver tu perfil.</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">Mis Listas</h5>
+            </div>
+            <div class="card-body">
+                {% if user %}
+                    <div class="mb-4">
+                        <h6>Crear nueva lista</h6>
+                        {% component "listForm" %}
+                    </div>
+                    <hr>
+                    <h6>Listas creadas</h6>
+                    {% component "myLists" %}
+                {% else %}
+                    <div class="alert alert-warning">Inicia sesión para ver tus listas.</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

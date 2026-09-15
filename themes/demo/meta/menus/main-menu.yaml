@@ -1,0 +1,13 @@
+items:
+    -
+        title: Inicio
+        nesting: 0
+        type: static-page
+        code: ''
+        reference: index
+        replace: 0
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+name: 'Menú principal'

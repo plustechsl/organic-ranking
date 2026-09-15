@@ -1,0 +1,12 @@
+<div class="list-group">
+    {% for list in lists %}
+        <a href="{{ "lista"|page({ slug: list.slug }) }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            <div>
+                <h6 class="mb-0">{{ list.name }}</h6>
+                <small class="text-muted">{{ list.links_count ?? 0 }} enlaces</small>
+            </div>
+        </a>
+    {% else %}
+        <div class="list-group-item text-muted">No hay listas disponibles.</div>
+    {% endfor %}
+</div>

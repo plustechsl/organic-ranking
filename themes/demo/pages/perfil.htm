@@ -1,0 +1,89 @@
+﻿url = "/perfil"
+title = "Mi Perfil"
+layout = "static"
+is_hidden = 0
+
+[account]
+paramCode = "code"
+
+[session]
+security = "user"
+redirect = "login"
+==
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Mi Perfil</h2>
+            <button data-request="onLogout" class="btn btn-outline-danger btn-sm">Cerrar Sesión</button>
+        </div>
+
+        <div class="card p-4 shadow-sm mb-4">
+            {{ form_ajax('onUpdate', { model: user, enctype: 'multipart/form-data' }) }}
+                <div class="row mb-4 align-items-center">
+                    <div class="col-md-3 text-center">
+                        {% if user.avatar %}
+                            <img src="{{ user.avatar.thumb(120, 120, {'mode': 'crop'}) }}" class="rounded-circle img-thumbnail" alt="Avatar">
+                        {% else %}
+                            <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center mx-auto" style="width: 120px; height: 120px; font-size: 2.5rem;">
+                                {{ user.name|first|upper }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-9">
+                        <label class="form-label fw-bold">Foto de perfil (Avatar)</label>
+                        <input type="file" name="avatar" class="form-control" accept="image/*">
+                        <div class="form-text">Formatos permitidos: JPG, PNG.</div>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Nombre completo</label>
+                        <input name="name" type="text" class="form-control" value="{{ user.name }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Correo electrónico</label>
+                        <input name="email" type="email" class="form-control" value="{{ user.email }}">
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Teléfono</label>
+                        <input name="phone" type="text" class="form-control" value="{{ user.phone }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Empresa / Compañía</label>
+                        <input name="company" type="text" class="form-control" value="{{ user.company }}">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Dirección</label>
+                    <input name="street_addr" type="text" class="form-control" value="{{ user.street_addr }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Biografía / Acerca de mí</label>
+                    <textarea name="about_me" class="form-control" rows="3">{{ user.about_me }}</textarea>
+                </div>
+
+                <hr class="my-4">
+                <h5 class="mb-3">Cambiar Contraseña</h5>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Nueva contraseña</label>
+                        <input name="password" type="password" class="form-control" placeholder="Dejar en blanco para mantener la actual">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Confirmar nueva contraseña</label>
+                        <input name="password_confirmation" type="password" class="form-control" placeholder="Repite la contraseña">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 mt-3">Guardar Cambios</button>
+            {{ form_close() }}
+        </div>
+    </div>
+</div>

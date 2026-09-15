@@ -1,0 +1,8 @@
+[viewBag]
+title = "Inicio"
+url = "/"
+layout = "static"
+is_hidden = 0
+navigation_hidden = 0
+==
+<p>Esta es la pagina de inicio</p>

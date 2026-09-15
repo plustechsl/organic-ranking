@@ -1,0 +1,24 @@
+﻿{% if canRegister %}
+    <h3>Registrarse</h3>
+    {{ form_ajax('onRegister') }}
+        <div class="mb-3">
+            <label for="registerName" class="form-label">Nombre completo</label>
+            <input name="name" type="text" class="form-control" id="registerName" placeholder="Tu nombre">
+        </div>
+        <div class="mb-3">
+            <label for="registerEmail" class="form-label">Correo electrónico</label>
+            <input name="email" type="email" class="form-control" id="registerEmail" placeholder="tu@email.com">
+        </div>
+        <div class="mb-3">
+            <label for="registerPassword" class="form-label">Contraseña</label>
+            <input name="password" type="password" class="form-control" id="registerPassword" placeholder="Elige tu contraseña">
+        </div>
+        <div class="mb-3">
+            <label for="registerPasswordConfirm" class="form-label">Confirmar contraseña</label>
+            <input name="password_confirmation" type="password" class="form-control" id="registerPasswordConfirm" placeholder="Repite tu contraseña">
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+    {{ form_close() }}
+{% else %}
+    <p>El registro de usuarios está desactivado actualmente.</p>
+{% endif %}

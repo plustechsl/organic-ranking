@@ -1,0 +1,43 @@
+url = "/"
+title = "Inicio"
+layout = "default"
+
+[linkList]
+[linkForm]
+[listList]
+[listForm]
+==
+<div class="container py-4">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white fw-bold">
+                    Sugerir Enlace
+                </div>
+                <div class="card-body">
+                    {% component "linkForm" %}
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white fw-bold">
+                    Crear Nueva Lista
+                </div>
+                <div class="card-body">
+                    {% component "listForm" %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h3 class="mb-3">Listas de Enlaces</h3>
+            <div id="listListContainer" class="mb-4">
+                {% component "listList" %}
+            </div>
+
+            <h3 class="mt-4 mb-3">Todos los Enlaces</h3>
+            <div id="linkListContainer">
+                {% component "linkList" %}
+            </div>
+        </div>
+    </div>
+</div>
