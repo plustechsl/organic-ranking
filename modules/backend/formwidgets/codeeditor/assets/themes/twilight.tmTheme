@@ -7,11 +7,19 @@
     <key>gutterSettings</key>
     <dict>
         <key>background</key>
+<<<<<<< HEAD
         <string>#232323</string>
         <key>divider</key>
         <string>#414143</string>
         <key>foreground</key>
         <string>#E2E2E2</string>
+=======
+        <string>#2F2F31</string>
+        <key>divider</key>
+        <string>#414143</string>
+        <key>foreground</key>
+        <string>#8F8F8F</string>
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         <key>selectionBackground</key>
         <string>#414143</string>
         <key>selectionBorder</key>
@@ -29,7 +37,11 @@
             <key>settings</key>
             <dict>
                 <key>background</key>
+<<<<<<< HEAD
                 <string>#141414</string>
+=======
+                <string>#181818</string>
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                 <key>caret</key>
                 <string>#A7A7A7</string>
                 <key>foreground</key>
@@ -294,6 +306,7 @@
         </dict>
         <dict>
             <key>name</key>
+<<<<<<< HEAD
             <string>♦ Support.type</string>
             <key>scope</key>
             <string>support.type</string>
@@ -307,6 +320,8 @@
         </dict>
         <dict>
             <key>name</key>
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
             <string>♦ Support.constant</string>
             <key>scope</key>
             <string>support.constant</string>

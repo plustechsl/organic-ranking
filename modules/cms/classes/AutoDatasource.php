@@ -285,6 +285,7 @@ class AutoDatasource extends Datasource implements DatasourceInterface
     }
 
     /**
+<<<<<<< HEAD
      * Get the path cache entry for the provided path from the first datasource that reports it
      *
      * @return mixed The datasource's entry for this path, or null if no datasource reports it.
@@ -303,6 +304,8 @@ class AutoDatasource extends Datasource implements DatasourceInterface
     }
 
     /**
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
      * Get all valid paths for the provided directory, removing any paths marked as deleted
      *
      * @param string $dirName
@@ -530,6 +533,7 @@ class AutoDatasource extends Datasource implements DatasourceInterface
      */
     public function lastModified(string $dirName, string $fileName, string $extension): ?int
     {
+<<<<<<< HEAD
         $path = $this->makeFilePath($dirName, $fileName, $extension);
 
         // Database datasources record modification times in the path cache, which lets the
@@ -541,6 +545,9 @@ class AutoDatasource extends Datasource implements DatasourceInterface
         }
 
         return $this->getDatasourceForPath($path)->lastModified($dirName, $fileName, $extension);
+=======
+        return $this->getDatasourceForPath($this->makeFilePath($dirName, $fileName, $extension))->lastModified($dirName, $fileName, $extension);
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     }
 
     /**

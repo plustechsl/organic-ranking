@@ -1,25 +1,43 @@
 <div class="permissioneditor <?= $this->previewMode ? 'control-disabled' : '' ?>" <?= $field->getAttributes() ?>>
     <table>
         <?php
+<<<<<<< HEAD
         $globalIndex = 0;
         $checkboxMode = !($this->mode === 'radio');
+=======
+            $firstTab = true;
+            $globalIndex = 0;
+            $checkboxMode = !($this->mode === 'radio');
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         ?>
         <?php foreach ($permissions as $tab => $tabPermissions): ?>
             <tr class="section">
                 <th class="tab"><?= e(trans($tab)) ?></th>
 
+<<<<<<< HEAD
                 <th class="permission-type" title="<?= e(trans('backend::lang.user.permissions_toggle_section_allow')) ?>"><?= e(trans('backend::lang.user.allow')) ?></th>
 
                 <?php if ($this->mode === 'radio'): ?>
                     <th class="permission-type" title="<?= e(trans('backend::lang.user.permissions_toggle_section_inherit')) ?>"><?= e(trans('backend::lang.user.inherit')) ?></th>
                     <th class="permission-type" title="<?= e(trans('backend::lang.user.permissions_toggle_section_deny')) ?>"><?= e(trans('backend::lang.user.deny')) ?></th>
+=======
+                <th class="permission-type"><?= $firstTab ? e(trans('backend::lang.user.allow')) : '' ?></th>
+
+                <?php if ($this->mode === 'radio'): ?>
+                    <th class="permission-type"><?= $firstTab ? e(trans('backend::lang.user.inherit')) : '' ?></th>
+                    <th class="permission-type"><?= $firstTab ? e(trans('backend::lang.user.deny')) : '' ?></th>
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                 <?php endif; ?>
 
                 <th></th>
             </tr>
 
             <?php
+<<<<<<< HEAD
             $lastIndex = count($tabPermissions) - 1;
+=======
+                $lastIndex = count($tabPermissions) - 1;
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
             ?>
             <?php foreach ($tabPermissions as $index => $permission): ?>
 
@@ -54,6 +72,7 @@
 
                     <td class="permission-name">
                         <?= e(trans($permission->label)) ?>
+<<<<<<< HEAD
                         <?php if ($permission->comment): ?>
                             <span
                                 class="text-info wn-icon-circle-info"
@@ -64,12 +83,19 @@
                                 aria-label="<?= e(trans($permission->comment)) ?>"
                             ></span>
                         <?php endif; ?>
+=======
+                        <p class="comment"><?= e(trans($permission->comment)) ?></p>
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                     </td>
 
                     <?php if ($this->mode === 'radio'): ?>
                         <td class="permission-value">
                             <div class="radio custom-radio">
+<<<<<<< HEAD
                                 <input
+=======
+                                 <input
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                                     id="<?= $allowId ?>"
                                     name="<?= e($baseFieldName) ?>[<?= e($permission->code) ?>]"
                                     value="1"
@@ -83,7 +109,11 @@
                         </td>
                         <td class="permission-value">
                             <div class="radio custom-radio">
+<<<<<<< HEAD
                                 <input
+=======
+                                 <input
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                                     id="<?= $inheritId ?>"
                                     name="<?= e($baseFieldName) ?>[<?= e($permission->code) ?>]"
                                     value="0"
@@ -96,7 +126,11 @@
                         </td>
                         <td class="permission-value">
                             <div class="radio custom-radio">
+<<<<<<< HEAD
                                 <input
+=======
+                                 <input
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                                     id="<?= $denyId ?>"
                                     name="<?= e($baseFieldName) ?>[<?= e($permission->code) ?>]"
                                     value="-1"
@@ -131,7 +165,11 @@
                     <?php else: ?>
                         <td class="permission-value">
                             <div class="checkbox custom-checkbox">
+<<<<<<< HEAD
                                 <input
+=======
+                                 <input
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                                     id="<?= $allowId ?>"
                                     name="<?= e($baseFieldName) ?>[<?= e($permission->code) ?>]"
                                     value="1"
@@ -147,6 +185,11 @@
                     <td></td>
                 </tr>
             <?php endforeach ?>
+<<<<<<< HEAD
+=======
+
+            <?php $firstTab = false; ?>
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         <?php endforeach ?>
     </table>
     <div class="permissions-overlay"></div>

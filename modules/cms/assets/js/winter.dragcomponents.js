@@ -61,12 +61,18 @@
             }
 
             $editor = widgets.getWidget($editorArea.get(0));
+<<<<<<< HEAD
             if (!$editor || !$editor.getEditor()) return;
             $editor.getEditor().focus();
             editorPos = $editor.getEditor().onMouseMove((event) => {
                 if (event.target && event.target.position) {
                     $editor.getEditor().setPosition(event.target.position);
                 }
+=======
+            $editor.getEditor().focus();
+            editorPos = $editor.getEditor().onMouseMove((event) => {
+                $editor.getEditor().setPosition(event.target.position);
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
             });
         }
 
@@ -176,7 +182,11 @@
                 $el.click()
 
                 // Can only attach to page or layouts
+<<<<<<< HEAD
                 if ($componentList.length && $editor && $editor.getEditor()) {
+=======
+                if ($componentList.length && $editor) {
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                     // Inject {% component %} tag
                     var alias = $('input[name="component_aliases[]"]', $el).val()
                     $editor.insert("{% component '" + alias + "' %}")

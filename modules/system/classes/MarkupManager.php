@@ -1,7 +1,10 @@
 <?php namespace System\Classes;
 
 use System\Twig\Extension as SystemTwigExtension;
+<<<<<<< HEAD
 use System\Twig\GetAttrAdjuster;
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 use System\Twig\Loader as SystemTwigLoader;
 use System\Twig\SecurityPolicy as TwigSecurityPolicy;
 use Twig\Environment as TwigEnvironment;
@@ -53,7 +56,11 @@ class MarkupManager
     /**
      * Make an instance of the base TwigEnvironment to extend further
      */
+<<<<<<< HEAD
     public static function makeBaseTwigEnvironment(?LoaderInterface $loader = null, array $options = []): TwigEnvironment
+=======
+    public static function makeBaseTwigEnvironment(LoaderInterface $loader = null, array $options = []): TwigEnvironment
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     {
         if (!$loader) {
             $loader = new SystemTwigLoader();
@@ -66,7 +73,10 @@ class MarkupManager
         $twig = new TwigEnvironment($loader, $options);
         $twig->addExtension(new SystemTwigExtension);
         $twig->addExtension(new SandboxExtension(new TwigSecurityPolicy, true));
+<<<<<<< HEAD
         $twig->addNodeVisitor(new GetAttrAdjuster);
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         return $twig;
     }
 

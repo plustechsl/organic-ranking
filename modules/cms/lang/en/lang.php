@@ -171,7 +171,11 @@ return [
         'not_found' => "AJAX handler ':name' was not found.",
     ],
     'cms' => [
+<<<<<<< HEAD
         'menu_label' => 'Theme Editor',
+=======
+        'menu_label' => 'CMS',
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     ],
     'sidebar' => [
         'add' => 'Add',
@@ -271,11 +275,15 @@ return [
         'no_list_records' => 'No records found',
         'delete_confirm' => 'Delete selected templates?',
         'order_by' => 'Order by',
+<<<<<<< HEAD
         'type_not_permitted' => 'You require the ":permission" permission to manage :type',
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     ],
     'permissions' => [
         'name' => 'CMS',
         'manage_content' => 'Manage website content files',
+<<<<<<< HEAD
         'manage_content_comment' => 'This permission should only be given to trusted users, as it allows direct access to the theme\'s content files.',
         'manage_assets' => 'Manage website assets - images, JavaScript files, CSS files',
         'manage_assets_comment' => 'This permission should only be given to trusted users, as it allows direct access to the theme\'s asset files, which are combined and served publicly.',
@@ -287,6 +295,13 @@ return [
         'manage_partials_comment' => 'This permission should only be given to trusted users, as it allows direct access to the theme\'s partial files, including PHP code if enabled.',
         'manage_themes' => 'Activate, deactivate and configure CMS themes',
         'manage_themes_comment' => 'This permission should only be given to trusted users, as it allows the user to add new themes, change the existing theme, or delete themes entirely.',
+=======
+        'manage_assets' => 'Manage website assets - images, JavaScript files, CSS files',
+        'manage_pages' => 'Create, modify and delete website pages',
+        'manage_layouts' => 'Create, modify and delete CMS layouts',
+        'manage_partials' => 'Create, modify and delete CMS partials',
+        'manage_themes' => 'Activate, deactivate and configure CMS themes',
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         'manage_theme_options' => 'Configure customization options for the active theme',
     ],
     'theme_log' => [

@@ -104,6 +104,7 @@ class CombineAssetsTest extends TestCase
         $combiner = CombineAssets::instance();
         $this->assertNull($combiner->resetCache());
     }
+<<<<<<< HEAD
 
     /**
      * Regression for GHSA-58fp-mcx6-7qf9. A writable theme `.less` file containing
@@ -294,4 +295,6 @@ class CombineAssetsTest extends TestCase
             @unlink($dest);
         }
     }
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 }

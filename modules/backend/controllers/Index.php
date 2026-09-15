@@ -72,10 +72,20 @@ class Index extends Controller
     protected function checkPermissionRedirect()
     {
         if (!$this->user->hasAccess('backend.access_dashboard')) {
+<<<<<<< HEAD
             if ($first = array_first(BackendMenu::listMainMenuItems())) {
                 return Redirect::intended($first->url);
             }
             return Backend::redirect('backend/myaccount');
+=======
+            $true = function () {
+                return true;
+            };
+            if ($first = array_first(BackendMenu::listMainMenuItems(), $true)) {
+                return Redirect::intended($first->url);
+            }
+            return Backend::redirect('backend/users/myaccount');
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         }
     }
 }

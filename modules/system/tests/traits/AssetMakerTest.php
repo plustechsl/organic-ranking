@@ -2,12 +2,18 @@
 
 namespace System\Tests\Traits;
 
+<<<<<<< HEAD
 use System\Classes\Asset\PackageManager;
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 use System\Tests\Bootstrap\TestCase;
 use System\Traits\AssetMaker;
 use System\Traits\EventEmitter;
 use System\Traits\ViewMaker;
+<<<<<<< HEAD
 use Winter\Storm\Support\Facades\File;
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 use Winter\Storm\Support\Facades\Url;
 
 class AssetMakerStub
@@ -21,16 +27,20 @@ class AssetMakerTest extends TestCase
 {
     private AssetMakerStub $stub;
 
+<<<<<<< HEAD
     private const VITE_FIXTURE_PACKAGE = 'theme-assettest';
     private const VITE_FIXTURE_THEME_PATH = '/modules/system/tests/fixtures/themes/assettest';
     private const VITE_HOT_URL = 'http://localhost:5173';
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     public function setUp() : void
     {
         $this->createApplication();
         $this->stub = new AssetMakerStub();
     }
 
+<<<<<<< HEAD
     public function tearDown(): void
     {
         // Remove any vite hot file that a vite-related test wrote into the fixture
@@ -79,6 +89,8 @@ class AssetMakerTest extends TestCase
         File::put($themePath . '/assets/dist/hot', self::VITE_HOT_URL);
     }
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     //
     // Tests
     //
@@ -172,6 +184,7 @@ class AssetMakerTest extends TestCase
             $hostUrl . 'myThird.css',
         ], $assets['css']);
     }
+<<<<<<< HEAD
 
     public function testGetAssetType(): void
     {
@@ -283,4 +296,6 @@ class AssetMakerTest extends TestCase
         // and not produce an empty Vite::tags() call (which would still emit @vite/client).
         $this->assertEmpty($output);
     }
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 }

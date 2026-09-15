@@ -4,10 +4,15 @@ namespace Cms\Tests\Classes;
 
 use System\Tests\Bootstrap\TestCase;
 use Cms\Classes\Theme;
+<<<<<<< HEAD
 use Cms\Models\ThemeData;
 use Config;
 use Event;
 use Winter\Storm\Exception\ApplicationException;
+=======
+use Config;
+use Event;
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
 class ThemeTest extends TestCase
 {
@@ -124,6 +129,7 @@ class ThemeTest extends TestCase
             $theme->assetUrl('assets/css/style2.css')
         );
     }
+<<<<<<< HEAD
 
     public function dirNameValidityProvider(): array
     {
@@ -174,4 +180,6 @@ class ThemeTest extends TestCase
 
         $this->assertEmpty(self::getProtectedProperty($themeData, 'instances'));
     }
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 }

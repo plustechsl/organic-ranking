@@ -6,7 +6,10 @@ use Request;
 use Form as FormHelper;
 use Backend\Classes\ControllerBehavior;
 use Winter\Storm\Database\Model;
+<<<<<<< HEAD
 use Winter\Storm\Database\Models\DeferredBinding;
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 use ApplicationException;
 
 /**
@@ -563,6 +566,7 @@ class RelationController extends ControllerBehavior
         return $this->sessionKey = FormHelper::getSessionKey();
     }
 
+<<<<<<< HEAD
     /**
      * Present a sortable relation's records in their stored order while operating in
      * deferred mode.
@@ -633,6 +637,8 @@ class RelationController extends ControllerBehavior
         })->values();
     }
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     //
     // Widgets
     //
@@ -780,6 +786,7 @@ class RelationController extends ControllerBehavior
                 $config->noRecordsMessage = $emptyMessage;
             }
 
+<<<<<<< HEAD
             /*
              * Drag-and-drop reordering - requires the parent model to use the
              * HasSortableRelations trait and to declare this relation in $sortableRelations.
@@ -837,6 +844,11 @@ class RelationController extends ControllerBehavior
             }
 
             /*
+=======
+            $widget = $this->makeWidget('Backend\Widgets\Lists', $config);
+
+            /*
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
              * Apply defined constraints
              */
             if ($sqlConditions = $this->getConfig('view[conditions]')) {
@@ -881,6 +893,7 @@ class RelationController extends ControllerBehavior
                     || $this->relationType === 'morphedByMany'
                 ) {
                     $this->relationObject->setQuery($query->getQuery());
+<<<<<<< HEAD
 
                     /*
                      * In deferred mode withDeferred() builds the query in "orphan" mode with no
@@ -892,6 +905,8 @@ class RelationController extends ControllerBehavior
                         $this->relationObject->reorder();
                     }
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                     return $this->relationObject;
                 }
             });
@@ -1583,6 +1598,7 @@ class RelationController extends ControllerBehavior
     {
         $this->beforeAjax();
 
+<<<<<<< HEAD
         $hydratedModel = $this->pivotWidget->model;
         $saveData = $this->pivotWidget->getSaveData();
 
@@ -1595,6 +1611,16 @@ class RelationController extends ControllerBehavior
                 $modelToSave->save(null, $this->pivotWidget->getSessionKey());
             }
         });
+=======
+        $foreignKeyName = $this->relationModel->getQualifiedKeyName();
+        $hydratedModel = $this->pivotWidget->model;
+        $saveData = $this->pivotWidget->getSaveData();
+
+        $modelsToSave = $this->prepareModelsToSave($hydratedModel, $saveData);
+        foreach ($modelsToSave as $modelToSave) {
+            $modelToSave->save(null, $this->pivotWidget->getSessionKey());
+        }
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
         return ['#'.$this->relationGetId('view') => $this->relationRenderView()];
     }

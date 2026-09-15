@@ -104,6 +104,7 @@ class Lists extends WidgetBase
     public $treeExpanded = false;
 
     /**
+<<<<<<< HEAD
      * @var bool Enable drag-and-drop reordering of records. Requires the model to use the
      * Sortable trait (model lists) or HasSortableRelations (relation lists). When enabled,
      * column header sorting and pagination are disabled and a drag handle column is shown.
@@ -111,6 +112,8 @@ class Lists extends WidgetBase
     public $sortable = false;
 
     /**
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
      * @var bool|string Display pagination when limiting records per page.
      */
     public $showPagination = 'auto';
@@ -231,7 +234,10 @@ class Lists extends WidgetBase
             'treeExpanded',
             'showPagination',
             'customViewPath',
+<<<<<<< HEAD
             'sortable',
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         ]);
 
         /*
@@ -245,6 +251,7 @@ class Lists extends WidgetBase
             $this->showPagination = $this->recordsPerPage && $this->recordsPerPage > 0;
         }
 
+<<<<<<< HEAD
         /*
          * Drag-and-drop reordering shows every record in its stored order. Disable column
          * header sorting and pagination so the model/relation order is always presented.
@@ -254,6 +261,8 @@ class Lists extends WidgetBase
             $this->showPagination = false;
         }
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         if ($this->customViewPath) {
             $this->prependViewPath($this->customViewPath);
         }
@@ -268,12 +277,15 @@ class Lists extends WidgetBase
     protected function loadAssets()
     {
         $this->addJs('js/winter.list.js', 'core');
+<<<<<<< HEAD
 
         // loadAssets() runs before init()/fillFromConfig(), so read the raw config value.
         if ($this->getConfig('sortable', false)) {
             $this->addJs('js/dist/winter.list.sortable.js', 'core');
             $this->addCss('css/winter.list.sortable.css', 'core');
         }
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     }
 
     /**
@@ -304,8 +316,11 @@ class Lists extends WidgetBase
         $this->vars['sortDirection'] = $this->sortDirection;
         $this->vars['showTree'] = $this->showTree;
         $this->vars['treeLevel'] = 0;
+<<<<<<< HEAD
         $this->vars['sortable'] = $this->sortable;
         $this->vars['reorderHandler'] = $this->sortable ? $this->getEventHandler('onReorder') : null;
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
         if ($this->showPagination) {
             $this->vars['pageCurrent'] = $records->currentPage();
@@ -383,6 +398,7 @@ class Lists extends WidgetBase
     }
 
     /**
+<<<<<<< HEAD
      * Event handler for drag-and-drop reordering of records.
      *
      * Receives the record ids in their new order and validates that all ids are within the
@@ -434,6 +450,8 @@ class Lists extends WidgetBase
     }
 
     /**
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
      * Event handler for switching the page number.
      */
     public function onPaginate()
@@ -1113,6 +1131,7 @@ class Lists extends WidgetBase
             $this->allColumns = array_merge($orderedDefinitions, $this->allColumns);
         }
 
+<<<<<<< HEAD
         /*
          * When drag-and-drop reordering is enabled, disable sorting on every column so
          * getSortColumn() returns false. This keeps the widget from applying its own
@@ -1125,6 +1144,8 @@ class Lists extends WidgetBase
             }
         }
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         return $this->allColumns;
     }
 
@@ -1228,10 +1249,13 @@ class Lists extends WidgetBase
             $total++;
         }
 
+<<<<<<< HEAD
         if ($this->sortable) {
             $total++;
         }
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         return $total;
     }
 

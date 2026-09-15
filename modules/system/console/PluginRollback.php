@@ -76,7 +76,11 @@ class PluginRollback extends Command
     /**
      * Suggest values for the optional version argument
      */
+<<<<<<< HEAD
     public function suggestVersionValues(?string $value, array $allInput): array
+=======
+    public function suggestVersionValues(string $value = null, array $allInput): array
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     {
         // Get the currently selected plugin
         $pluginName = $this->getPluginIdentifier($allInput['arguments']['plugin']);

@@ -18,7 +18,10 @@ use Assetic\Filter\CssImportFilter;
 use Assetic\Filter\CssRewriteFilter;
 use Assetic\Filter\JavaScriptMinifierFilter;
 use Assetic\Filter\StylesheetMinifyFilter;
+<<<<<<< HEAD
 use Winter\Storm\Filesystem\PathResolver;
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 use Winter\Storm\Parse\Assetic\Cache\FilesystemCache;
 use Winter\Storm\Parse\Assetic\Filter\LessCompiler;
 use Winter\Storm\Parse\Assetic\Filter\ScssCompiler;
@@ -131,6 +134,7 @@ class CombineAssets
             $this->useDeepHashing = Config::get('app.debug', false);
         }
 
+<<<<<<< HEAD
         // Constrain asset import directives to known asset trees. Without these
         // explicit roots, a writable asset could disclose arbitrary server-readable
         // files: `@import (inline) "<path>"` in a .less file (GHSA-58fp-mcx6-7qf9),
@@ -151,10 +155,17 @@ class CombineAssets
         $jsImporter = new JavascriptImporter;
         $jsImporter->setAllowedImportRoots($allowedImportRoots);
         $this->registerFilter('js', $jsImporter);
+=======
+        /*
+         * Register JavaScript filters
+         */
+        $this->registerFilter('js', new JavascriptImporter);
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
         /*
          * Register CSS filters
          */
+<<<<<<< HEAD
         $cssImportFilter = new CssImportFilter;
         // Assetic's CssImportFilter resolves `@import` targets relative to the source
         // with `..` traversal allowed; confine the resolved path to the allowed roots.
@@ -170,6 +181,12 @@ class CombineAssets
         $lessCompiler = new LessCompiler;
         $lessCompiler->setAllowedImportRoots($allowedImportRoots);
         $this->registerFilter('less', $lessCompiler);
+=======
+        $this->registerFilter('css', new CssImportFilter);
+        $this->registerFilter(['css', 'less', 'scss'], new CssRewriteFilter);
+
+        $this->registerFilter('less', new LessCompiler);
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         $this->registerFilter('scss', new ScssCompiler);
 
         /*

@@ -649,8 +649,11 @@ class AssetList extends WidgetBase
      */
     public function onUpload()
     {
+<<<<<<< HEAD
         $this->validateRequestTheme();
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         $fileName = null;
 
         try {

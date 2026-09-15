@@ -93,6 +93,7 @@ class Theme extends CmsObject
 
     /**
      * Sets the theme directory name.
+<<<<<<< HEAD
      * @throws ApplicationException if the directory name is invalid.
      */
     public function setDirName(string $dirName): void
@@ -101,6 +102,11 @@ class Theme extends CmsObject
             throw new ApplicationException(Lang::get('cms::lang.theme.dir_name_invalid'));
         }
 
+=======
+     */
+    public function setDirName(string $dirName): void
+    {
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         $this->dirName = $dirName;
     }
 
@@ -113,6 +119,7 @@ class Theme extends CmsObject
     }
 
     /**
+<<<<<<< HEAD
      * Determines if the given directory name is valid.
      */
     public static function isValidDirName(string $dirName): bool
@@ -121,6 +128,8 @@ class Theme extends CmsObject
     }
 
     /**
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
      * Helper for {{ theme.id }} twig vars
      * Returns a unique string for this theme.
      */
@@ -250,6 +259,7 @@ class Theme extends CmsObject
     /**
      * Sets the active theme in the database.
      * The active theme code is stored in the database and overrides the configuration cms.activeTheme parameter.
+<<<<<<< HEAD
      * @throws ApplicationException if the directory name is invalid.
      */
     public static function setActiveTheme(string $code): void
@@ -258,6 +268,11 @@ class Theme extends CmsObject
             throw new ApplicationException(Lang::get('cms::lang.theme.dir_name_invalid'));
         }
 
+=======
+     */
+    public static function setActiveTheme(string $code): void
+    {
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         self::resetCache();
 
         Parameter::set(self::ACTIVE_KEY, $code);
@@ -563,8 +578,11 @@ class Theme extends CmsObject
         self::$activeThemeCache = false;
         self::$editThemeCache = false;
 
+<<<<<<< HEAD
         ThemeData::flushCache();
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         // Sometimes it may be desired to only clear the local cache of the active / edit themes instead of the persistent cache
         if (!$memoryOnly) {
             Cache::forget(self::ACTIVE_KEY);

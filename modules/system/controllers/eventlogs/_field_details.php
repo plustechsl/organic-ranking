@@ -1,11 +1,14 @@
 <?php
 if (!isset($value['logVersion']) || $value['logVersion'] !== 2) {
+<<<<<<< HEAD
     if ($value ?? false) {
         printf(
             '<h4>DETAILS</h4><pre style="background: #fff; padding: 10px; border: 1px solid #ddd;">%s</pre>',
             e(print_r($value, true))
         );
     }
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     return;
 }
 

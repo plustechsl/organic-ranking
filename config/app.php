@@ -46,7 +46,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'url' => env('APP_URL', 'http://localhost'),
+=======
+    'url' => env('APP_URL', 'http://localhost:8085'),
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
     /*
     |--------------------------------------------------------------------------

@@ -82,7 +82,11 @@ abstract class ComponentBase extends Extendable
      * @param null|CodeBase $cmsObject
      * @param array $properties
      */
+<<<<<<< HEAD
     public function __construct(?CodeBase $cmsObject = null, $properties = [])
+=======
+    public function __construct(CodeBase $cmsObject = null, $properties = [])
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     {
         if ($cmsObject !== null) {
             $this->page = $cmsObject;

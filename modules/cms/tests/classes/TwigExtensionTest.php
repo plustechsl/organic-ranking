@@ -5,6 +5,7 @@ namespace Cms\Tests\Classes;
 use Cms\Twig\Extension;
 use Cms\Classes\Controller;
 
+<<<<<<< HEAD
 use System\Classes\Asset\PackageManager;
 use System\Tests\Bootstrap\TestCase;
 use Winter\Storm\Exception\SystemException;
@@ -30,6 +31,13 @@ class TwigExtensionTest extends TestCase
         parent::tearDown();
     }
 
+=======
+use System\Tests\Bootstrap\TestCase;
+use Winter\Storm\Exception\SystemException;
+
+class TwigExtensionTest extends TestCase
+{
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     public function testPartialFunction()
     {
         $extension = new Extension;
@@ -55,6 +63,7 @@ class TwigExtensionTest extends TestCase
         $this->expectExceptionMessageMatches('/is\snot\sfound/');
         $this->assertFalse($extension->contentFunction('invalid-content-file', [], true));
     }
+<<<<<<< HEAD
 
     public function testStylesTagEmitsCssAndViteCss(): void
     {
@@ -162,4 +171,6 @@ class TwigExtensionTest extends TestCase
 
         return [$extension, $controller];
     }
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 }

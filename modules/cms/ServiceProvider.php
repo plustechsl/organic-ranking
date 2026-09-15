@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 <?php
 
 namespace Cms;
+=======
+<?php namespace Cms;
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
 use Backend;
 use Backend\Classes\WidgetManager;
@@ -332,42 +336,60 @@ class ServiceProvider extends ModuleServiceProvider
                 'cms.manage_content' => [
                     'label' => 'cms::lang.permissions.manage_content',
                     'tab' => 'cms::lang.permissions.name',
+<<<<<<< HEAD
                     'comment' => 'cms::lang.permissions.manage_content_comment',
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                     'roles' => [UserRole::CODE_DEVELOPER],
                     'order' => 100
                 ],
                 'cms.manage_assets' => [
                     'label' => 'cms::lang.permissions.manage_assets',
                     'tab' => 'cms::lang.permissions.name',
+<<<<<<< HEAD
                     'comment' => 'cms::lang.permissions.manage_assets_comment',
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                     'roles' => [UserRole::CODE_DEVELOPER],
                     'order' => 100
                 ],
                 'cms.manage_pages' => [
                     'label' => 'cms::lang.permissions.manage_pages',
                     'tab' => 'cms::lang.permissions.name',
+<<<<<<< HEAD
                     'comment' => 'cms::lang.permissions.manage_pages_comment',
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                     'roles' => [UserRole::CODE_DEVELOPER],
                     'order' => 100
                 ],
                 'cms.manage_layouts' => [
                     'label' => 'cms::lang.permissions.manage_layouts',
                     'tab' => 'cms::lang.permissions.name',
+<<<<<<< HEAD
                     'comment' => 'cms::lang.permissions.manage_layouts_comment',
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                     'roles' => [UserRole::CODE_DEVELOPER],
                     'order' => 100
                 ],
                 'cms.manage_partials' => [
                     'label' => 'cms::lang.permissions.manage_partials',
                     'tab' => 'cms::lang.permissions.name',
+<<<<<<< HEAD
                     'comment' => 'cms::lang.permissions.manage_partials_comment',
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                     'roles' => [UserRole::CODE_DEVELOPER],
                     'order' => 100
                 ],
                 'cms.manage_themes' => [
                     'label' => 'cms::lang.permissions.manage_themes',
                     'tab' => 'cms::lang.permissions.name',
+<<<<<<< HEAD
                     'comment' => 'cms::lang.permissions.manage_themes_comment',
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                     'roles' => [UserRole::CODE_DEVELOPER],
                     'order' => 100
                 ],

@@ -2,6 +2,7 @@
 
 namespace Cms\Tests\Classes;
 
+<<<<<<< HEAD
 use Exception;
 use System\Tests\Bootstrap\PluginTestCase;
 use Cms\Classes\AutoDatasource;
@@ -10,6 +11,13 @@ use Winter\Storm\Database\Model;
 use Winter\Storm\Halcyon\Datasource\DbDatasource;
 use Winter\Storm\Halcyon\Datasource\FileDatasource;
 use Winter\Storm\Support\Facades\DB;
+=======
+use System\Tests\Bootstrap\PluginTestCase;
+use Cms\Classes\AutoDatasource;
+use Winter\Storm\Database\Model;
+use Winter\Storm\Halcyon\Datasource\DbDatasource;
+use Winter\Storm\Halcyon\Datasource\FileDatasource;
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
 class CmsThemeTemplateFixture extends Model
 {
@@ -61,8 +69,12 @@ class AutoDatasourceTest extends PluginTestCase
             'source' => 'test',
             'path' => 'partials/subdir/test.htm',
             'content' => 'AutoDatasource partials/subdir/test.htm',
+<<<<<<< HEAD
             'file_size' => 39,
             'updated_at' => '2019-06-01 12:00:00'
+=======
+            'file_size' => 39
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         ]);
 
         $this->fixtures[] = CmsThemeTemplateFixture::create([
@@ -122,6 +134,7 @@ class AutoDatasourceTest extends PluginTestCase
         // One filesystem partial should be marked deleted in database
         $this->assertArrayNotHasKey('nesting/level2.htm', $results);
     }
+<<<<<<< HEAD
 
     public function testPathCacheValueShapes()
     {
@@ -214,4 +227,6 @@ class AutoDatasourceTest extends PluginTestCase
             $this->datasource->selectOne('partials', 'subdir/test', 'htm')['content']
         );
     }
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 }

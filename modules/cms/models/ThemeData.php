@@ -4,7 +4,10 @@ namespace Cms\Models;
 
 use Cms\Classes\Theme as CmsTheme;
 use Exception;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Cache;
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 use Illuminate\Support\Facades\Lang;
 use System\Classes\CombineAssets;
 use System\Models\File;
@@ -56,11 +59,14 @@ class ThemeData extends Model
     protected static $instances = [];
 
     /**
+<<<<<<< HEAD
      * @var int The number of minutes the theme data is cached for.
      */
     protected static $cacheTtl = 1440;
 
     /**
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
      * Before saving the model, strip dynamic attributes applied from config.
      * @return void
      */
@@ -82,8 +88,11 @@ class ThemeData extends Model
      */
     public function afterSave()
     {
+<<<<<<< HEAD
         static::flushCache($this->theme);
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         try {
             CombineAssets::resetCache();
         }
@@ -92,6 +101,7 @@ class ThemeData extends Model
     }
 
     /**
+<<<<<<< HEAD
      * Clear the cache after deleting so that the record isn't served from the cache.
      */
     public function afterDelete()
@@ -122,6 +132,8 @@ class ThemeData extends Model
     }
 
     /**
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
      * Returns a cached version of this model, based on a Theme object.
      * @param $theme Cms\Classes\Theme
      * @return self
@@ -134,11 +146,15 @@ class ThemeData extends Model
         }
 
         try {
+<<<<<<< HEAD
             // The record is cached rather than queried on every request; it is invalidated
             // by afterSave() / afterDelete(), which also covers the initial creation below.
             $themeData = self::where('theme', $dirName)
                 ->remember(self::$cacheTtl, self::getCacheKey($dirName))
                 ->first() ?: self::create(['theme' => $dirName]);
+=======
+            $themeData = self::firstOrCreate(['theme' => $dirName]);
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         }
         catch (Exception $ex) {
             // Database failed

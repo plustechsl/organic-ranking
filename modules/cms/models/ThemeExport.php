@@ -59,7 +59,11 @@ class ThemeExport extends Model
      *
      * @return void
      */
+<<<<<<< HEAD
     public function save(?array $options = null, $sessionKey = null)
+=======
+    public function save(array $options = null, $sessionKey = null)
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     {
         throw new ApplicationException(sprintf("The % model is not intended to be saved, please use %s instead", get_class($this), 'ThemeData'));
     }

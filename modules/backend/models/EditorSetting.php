@@ -6,7 +6,10 @@ use Exception;
 use Illuminate\Support\Facades\Cache;
 use Less_Parser;
 use Winter\Storm\Database\Model;
+<<<<<<< HEAD
 use Winter\Storm\Parse\Assetic\Filter\LessImportResolver;
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 use Winter\Storm\Support\Facades\File;
 
 /**
@@ -257,13 +260,18 @@ class EditorSetting extends Model
             $customCss = '/* ' . e($ex->getMessage()) . ' */';
         }
 
+<<<<<<< HEAD
         return strip_tags($customCss);
+=======
+        return $customCss;
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     }
 
     public static function compileCss()
     {
         $parser = new Less_Parser(['compress' => true]);
 
+<<<<<<< HEAD
         // Refuse every @import directive. There is no bundled .less file to
         // import here, and the admin-supplied html_custom_styles field has no
         // legitimate use for @import. Without this gate, an @import (inline)
@@ -271,6 +279,8 @@ class EditorSetting extends Model
         // wikimedia/less.php raw-path fallback. See GHSA-58fp-mcx6-7qf9.
         $parser->SetImportDirs(['' => LessImportResolver::makeResolver([], null)]);
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         $customStyles = '.fr-view {';
         $customStyles .= self::get('html_custom_styles');
         $customStyles .= '}';

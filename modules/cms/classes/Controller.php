@@ -386,6 +386,7 @@ class Controller
         if (
             $useAjax &&
             ($handler = post('_handler')) &&
+<<<<<<< HEAD
             $this->verifyCsrfToken()
         ) {
             $this->validateHandlerName($handler);
@@ -396,6 +397,13 @@ class Controller
             ) {
                 return $handlerResponse;
             }
+=======
+            $this->verifyCsrfToken() &&
+            ($handlerResponse = $this->runAjaxHandler($handler)) &&
+            $handlerResponse !== true
+        ) {
+            return $handlerResponse;
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         }
 
         /*
@@ -687,6 +695,7 @@ class Controller
     }
 
     /**
+<<<<<<< HEAD
      * Validates the AJAX handler name follows the expected format.
      *
      * @throws SystemException if the handler name is invalid
@@ -699,6 +708,8 @@ class Controller
     }
 
     /**
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
      * Executes the page, layout, component and plugin AJAX handlers.
      *
      * @throws SystemException If the handler is invalid or could not be found
@@ -711,7 +722,13 @@ class Controller
                 /*
                  * Validate the handler name
                  */
+<<<<<<< HEAD
                 $this->validateHandlerName($handler);
+=======
+                if (!preg_match('/^(?:\w+\:{2})?on[A-Z]{1}[\w+]*$/', $handler)) {
+                    throw new SystemException(Lang::get('cms::lang.ajax_handler.invalid_name', ['name'=>$handler]), 400);
+                }
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
                 /*
                  * Validate the handler partial list
@@ -1586,7 +1603,11 @@ class Controller
      * @param ComponentBase $component
      * @return void
      */
+<<<<<<< HEAD
     public function setComponentContext(?ComponentBase $component = null)
+=======
+    public function setComponentContext(ComponentBase $component = null)
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     {
         $this->componentContext = $component;
     }

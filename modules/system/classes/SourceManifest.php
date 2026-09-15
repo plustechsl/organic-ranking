@@ -43,7 +43,11 @@ class SourceManifest
     /**
      * Constructor
      */
+<<<<<<< HEAD
     public function __construct(?string $source = null, ?string $forks = null, bool $autoload = true)
+=======
+    public function __construct(string $source = null, string $forks = null, bool $autoload = true)
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     {
         $this->setSource($source ?? Config::get(
             'cms.sourceManifestUrl',

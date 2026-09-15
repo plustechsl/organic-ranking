@@ -13,7 +13,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'default' => env('DB_CONNECTION', 'mysql'),
+=======
+    'default' => env('DB_CONNECTION', 'sqlite'),
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
     /*
     |--------------------------------------------------------------------------
@@ -32,7 +36,11 @@ return [
 
     'connections' => [
         'sqlite' => [
+<<<<<<< HEAD
             'database' => env('DB_DATABASE', 'winter_db'),
+=======
+            'database' => env('DB_DATABASE', 'storage/database.sqlite'),
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
             'driver' => 'sqlite',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
             'prefix' => '',
@@ -41,10 +49,17 @@ return [
         'mysql' => [
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
+<<<<<<< HEAD
             'database' => env('DB_DATABASE', 'winter_db'),
             'driver' => 'mysql',
             'engine' => 'InnoDB',
             'host' => env('DB_HOST', 'db'),
+=======
+            'database' => env('DB_DATABASE', 'winter'),
+            'driver' => 'mysql',
+            'engine' => 'InnoDB',
+            'host' => env('DB_HOST', '127.0.0.1'),
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
@@ -59,11 +74,19 @@ return [
         ],
         'pgsql' => [
             'charset' => 'utf8',
+<<<<<<< HEAD
             'database' => env('DB_DATABASE', 'winter_db'),
             'driver' => 'pgsql',
             'host' => env('DB_HOST', 'db'),
             'password' => env('DB_PASSWORD', ''),
             'port' => env('DB_PORT', '3306'),
+=======
+            'database' => env('DB_DATABASE', 'winter'),
+            'driver' => 'pgsql',
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'password' => env('DB_PASSWORD', ''),
+            'port' => env('DB_PORT', '5432'),
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
             'prefix' => '',
             'prefix_indexes' => true,
             'search_path' => 'public',

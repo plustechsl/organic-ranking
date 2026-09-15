@@ -178,13 +178,19 @@ class ServiceProvider extends ModuleServiceProvider
                 'backend.manage_users' => [
                     'label' => 'system::lang.permissions.manage_other_administrators',
                     'tab'   => 'system::lang.permissions.name',
+<<<<<<< HEAD
                     'comment' => 'system::lang.permissions.manage_other_administrators_comment',
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                     'roles' => [UserRole::CODE_DEVELOPER],
                 ],
                 'backend.impersonate_users' => [
                     'label' => 'system::lang.permissions.impersonate_users',
                     'tab'   => 'system::lang.permissions.name',
+<<<<<<< HEAD
                     'comment' => 'system::lang.permissions.impersonate_users_comment',
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                     'roles' => [UserRole::CODE_DEVELOPER],
                 ],
                 'backend.manage_preferences' => [
@@ -205,7 +211,10 @@ class ServiceProvider extends ModuleServiceProvider
                 'backend.manage_branding' => [
                     'label' => 'system::lang.permissions.manage_branding',
                     'tab'   => 'system::lang.permissions.name',
+<<<<<<< HEAD
                     'comment' => 'system::lang.permissions.manage_branding_comment',
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                     'roles' => [UserRole::CODE_DEVELOPER],
                 ],
                 'media.manage_media' => [
@@ -216,7 +225,10 @@ class ServiceProvider extends ModuleServiceProvider
                 'backend.allow_unsafe_markdown' => [
                     'label' => 'backend::lang.permissions.allow_unsafe_markdown',
                     'tab' => 'system::lang.permissions.name',
+<<<<<<< HEAD
                     'comment' => 'backend::lang.permissions.allow_unsafe_markdown_comment',
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                     'roles' => [UserRole::CODE_DEVELOPER],
                 ],
             ]);
@@ -303,7 +315,11 @@ class ServiceProvider extends ModuleServiceProvider
                     'description' => 'backend::lang.myaccount.menu_description',
                     'category'    => SettingsManager::CATEGORY_MYSETTINGS,
                     'icon'        => 'icon-user',
+<<<<<<< HEAD
                     'url'         => Backend::url('backend/myaccount'),
+=======
+                    'url'         => Backend::url('backend/users/myaccount'),
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                     'order'       => 500,
                     'context'     => 'mysettings',
                     'keywords'    => 'backend::lang.myaccount.menu_keywords'

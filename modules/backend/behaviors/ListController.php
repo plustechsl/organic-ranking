@@ -153,7 +153,10 @@ class ListController extends ControllerBehavior
             'showTree',
             'treeExpanded',
             'customViewPath',
+<<<<<<< HEAD
             'sortable',
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         ];
 
         foreach ($configFieldsToTransfer as $field) {
@@ -167,6 +170,7 @@ class ListController extends ControllerBehavior
          */
         $widget = $this->makeWidget(\Backend\Widgets\Lists::class, $columnConfig);
 
+<<<<<<< HEAD
         /*
          * Drag-and-drop reordering - requires the model to use the Sortable trait.
          */
@@ -203,6 +207,8 @@ class ListController extends ControllerBehavior
             });
         }
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         $widget->bindEvent('list.extendColumnsBefore', function () use ($widget) {
             $this->controller->listExtendColumnsBefore($widget);
         });
@@ -459,7 +465,11 @@ class ListController extends ControllerBehavior
      *
      * @return array The list element selector as the key, and the list contents are the value.
      */
+<<<<<<< HEAD
     public function listRefresh(?string $definition = null)
+=======
+    public function listRefresh(string $definition = null)
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     {
         if (!count($this->listWidgets)) {
             $this->makeLists();
@@ -476,7 +486,11 @@ class ListController extends ControllerBehavior
      * Returns the widget used by this behavior.
      * @return \Backend\Classes\WidgetBase
      */
+<<<<<<< HEAD
     public function listGetWidget(?string $definition = null)
+=======
+    public function listGetWidget(string $definition = null)
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     {
         if (!$definition) {
             $definition = $this->primaryDefinition;
@@ -489,7 +503,11 @@ class ListController extends ControllerBehavior
      * Returns the configuration used by this behavior.
      * @return stdClass
      */
+<<<<<<< HEAD
     public function listGetConfig(?string $definition = null)
+=======
+    public function listGetConfig(string $definition = null)
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     {
         if (!$definition) {
             $definition = $this->primaryDefinition;

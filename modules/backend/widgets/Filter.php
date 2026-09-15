@@ -779,6 +779,7 @@ class Filter extends WidgetBase
                      * Condition
                      */
                     if ($scopeConditions = $scope->conditions) {
+<<<<<<< HEAD
                         [$sql, $bindings] = $this->processConditionBindings($scopeConditions, [
                             'filtered' => $value->format('Y-m-d'),
                             'after'    => $value->format('Y-m-d H:i:s'),
@@ -786,6 +787,13 @@ class Filter extends WidgetBase
                         ]);
 
                         $query->whereRaw(DbDongle::parse($sql), $bindings);
+=======
+                        $query->whereRaw(DbDongle::parse(strtr($scopeConditions, [
+                            ':filtered' => $value->format('Y-m-d'),
+                            ':after'    => $value->format('Y-m-d H:i:s'),
+                            ':before'   => $value->copy()->addDay()->addMinutes(-1)->format('Y-m-d H:i:s')
+                        ])));
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                     }
                     /*
                      * Scope
@@ -806,6 +814,7 @@ class Filter extends WidgetBase
                          * Condition
                          */
                         if ($scopeConditions = $scope->conditions) {
+<<<<<<< HEAD
                             [$sql, $bindings] = $this->processConditionBindings($scopeConditions, [
                                 'afterDate'  => $after->format('Y-m-d'),
                                 'after'      => $after->format('Y-m-d H:i:s'),
@@ -814,6 +823,14 @@ class Filter extends WidgetBase
                             ]);
 
                             $query->whereRaw(DbDongle::parse($sql), $bindings);
+=======
+                            $query->whereRaw(DbDongle::parse(strtr($scopeConditions, [
+                                ':afterDate'  => $after->format('Y-m-d'),
+                                ':after'      => $after->format('Y-m-d H:i:s'),
+                                ':beforeDate' => $before->format('Y-m-d'),
+                                ':before'     => $before->format('Y-m-d H:i:s')
+                            ])));
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                         }
                         /*
                          * Scope
@@ -832,11 +849,17 @@ class Filter extends WidgetBase
                      * Condition
                      */
                     if ($scopeConditions = $scope->conditions) {
+<<<<<<< HEAD
                         [$sql, $bindings] = $this->processConditionBindings($scopeConditions, [
                             'filtered' => (float) $scope->value,
                         ]);
 
                         $query->whereRaw(DbDongle::parse($sql), $bindings);
+=======
+                        $query->whereRaw(DbDongle::parse(strtr($scopeConditions, [
+                            ':filtered' => $scope->value,
+                        ])));
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                     }
                     /*
                      * Scope
@@ -857,12 +880,19 @@ class Filter extends WidgetBase
                          * Condition
                          */
                         if ($scopeConditions = $scope->conditions) {
+<<<<<<< HEAD
                             [$sql, $bindings] = $this->processConditionBindings($scopeConditions, [
                                 'min' => $min === null ? -2147483647 : (float) $min,
                                 'max' => $max === null ? 2147483647 : (float) $max,
                             ]);
 
                             $query->whereRaw(DbDongle::parse($sql), $bindings);
+=======
+                            $query->whereRaw(DbDongle::parse(strtr($scopeConditions, [
+                                ':min'  => $min === null ? -2147483647 : $min,
+                                ':max'  => $max === null ? 2147483647 : $max
+                            ])));
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                         }
                         /*
                          * Scope
@@ -1102,6 +1132,7 @@ class Filter extends WidgetBase
     protected function numbersFromAjax($ajaxNumbers)
     {
         $numbers = [];
+<<<<<<< HEAD
 
         if (!empty($ajaxNumbers)) {
             if (!is_array($ajaxNumbers)) {
@@ -1112,6 +1143,17 @@ class Filter extends WidgetBase
                 foreach ($ajaxNumbers as $number) {
                     if (is_numeric($number)) {
                         $numbers[] = (float) $number;
+=======
+        $numberRegex = '/\d/';
+
+        if (!empty($ajaxNumbers)) {
+            if (!is_array($ajaxNumbers) && preg_match($numberRegex, $ajaxNumbers)) {
+                $numbers = [$ajaxNumbers];
+            } else {
+                foreach ($ajaxNumbers as $i => $number) {
+                    if (preg_match($numberRegex, $number)) {
+                        $numbers[] = $number;
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                     } else {
                         $numbers[] = null;
                     }
@@ -1123,6 +1165,7 @@ class Filter extends WidgetBase
     }
 
     /**
+<<<<<<< HEAD
      * Converts named :placeholder parameters in a conditions string to
      * positional ? parameters and returns the modified SQL along with an
      * ordered bindings array. Only placeholders present in the provided
@@ -1154,6 +1197,8 @@ class Filter extends WidgetBase
     }
 
     /**
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
      * @param mixed $scope
      *
      * @return string

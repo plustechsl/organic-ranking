@@ -79,6 +79,7 @@ class User extends UserBase
     public static $loginAttribute = 'login';
 
     /**
+<<<<<<< HEAD
      * @var array<string> Relations on this model that require `backend.manage_users`
      * to change on another user's record. Deliberately limited to the relations this
      * model owns: authorization semantics for plugin-added relations belong to the
@@ -105,6 +106,8 @@ class User extends UserBase
     }
 
     /**
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
      * @return string Returns the user's full name.
      */
     public function getFullNameAttribute()
@@ -155,6 +158,7 @@ class User extends UserBase
     }
 
     /**
+<<<<<<< HEAD
      * Determine whether the given user (or the currently authenticated user)
      * is authorized to manage this user record.
      *
@@ -211,16 +215,32 @@ class User extends UserBase
     protected function authorizeChange(): void
     {
         $actor = BackendAuth::getUser();
+=======
+     * Before save event — enforce authorization rules to prevent privilege escalation.
+     * @return void
+     */
+    public function beforeSave()
+    {
+        $actor = BackendAuth::getUser();
+        $isCurrentUser = $this->exists && $actor && $actor->getKey() === $this->getKey();
+
+        // No authenticated user (CLI, artisan, queue, seeders) — allow everything
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         if (!$actor) {
             return;
         }
 
+<<<<<<< HEAD
         $isCurrentUser = $this->exists && $actor->getKey() === $this->getKey();
 
+=======
+        // Rule 1: Self-escalation — users cannot modify their own role, superuser status, or permissions
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         if ($isCurrentUser && $this->isDirty(['role_id', 'is_superuser', 'permissions'])) {
             throw new AuthorizationException(Lang::get('backend::lang.user.self_escalation_denied'));
         }
 
+<<<<<<< HEAD
         if (!$isCurrentUser && !$this->canBeManagedByUser($actor)) {
             throw new AuthorizationException(Lang::get('backend::lang.user.cannot_manage_user'));
         }
@@ -272,6 +292,16 @@ class User extends UserBase
     {
         if (!$this->canBeManagedByUser()) {
             throw new AuthorizationException(Lang::get('backend::lang.user.cannot_manage_user'));
+=======
+        // Rule 2: Must have backend.manage_users to manage other users
+        if (!$isCurrentUser && !$actor->hasAccess('backend.manage_users')) {
+            throw new AuthorizationException(Lang::get('backend::lang.user.manage_users_denied'));
+        }
+
+        // Rule 3: Only superusers can grant superuser status or edit existing superusers
+        if (!$actor->isSuperUser() && ($this->is_superuser || $this->getOriginal('is_superuser'))) {
+            throw new AuthorizationException(Lang::get('backend::lang.user.superuser_grant_denied'));
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         }
     }
 
@@ -361,6 +391,7 @@ class User extends UserBase
 
     /**
      * Remove the suspension on this user.
+<<<<<<< HEAD
      *
      * @throws AuthorizationException if the current user lacks permission
      */
@@ -392,6 +423,15 @@ class User extends UserBase
         return parent::getResetPasswordCode();
     }
 
+=======
+     * @return void
+     */
+    public function unsuspend()
+    {
+        BackendAuth::findThrottleByUserId($this->id)->unsuspend();
+    }
+
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     //
     // Impersonation
     //

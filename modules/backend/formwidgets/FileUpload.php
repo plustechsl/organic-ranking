@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace Backend\FormWidgets;
@@ -15,6 +16,23 @@ use Winter\Storm\Support\Facades\DB;
 use Winter\Storm\Support\Facades\Event;
 use Winter\Storm\Support\Facades\Input;
 use Winter\Storm\Support\Facades\Validator;
+=======
+<?php namespace Backend\FormWidgets;
+
+use Db;
+use Input;
+use Event;
+use Request;
+use Response;
+use Validator;
+use Backend\Widgets\Form;
+use Backend\Classes\FormField;
+use Backend\Classes\FormWidgetBase;
+use Winter\Storm\Filesystem\Definitions as FileDefinitions;
+use ApplicationException;
+use ValidationException;
+use Exception;
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
 /**
  * File upload field
@@ -100,7 +118,11 @@ class FileUpload extends FormWidgetBase
     protected $defaultAlias = 'fileupload';
 
     /**
+<<<<<<< HEAD
      * @var Form The embedded form for modifying the properties of the selected file
+=======
+     * @var Backend\Widgets\Form The embedded form for modifying the properties of the selected file
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
      */
     protected $configFormWidget;
 
@@ -177,13 +199,18 @@ class FileUpload extends FormWidgetBase
     /**
      * Get the file record for this request, returns false if none available
      *
+<<<<<<< HEAD
      * @return File|false
+=======
+     * @return System\Models\File|false
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
      */
     protected function getFileRecord()
     {
         $record = false;
 
         if (!empty(post('file_id'))) {
+<<<<<<< HEAD
             // Scope the lookup to this widget's own relation (including any files
             // bound via the current deferred-binding session) so that an
             // attacker-controlled file_id cannot reference an arbitrary
@@ -192,6 +219,9 @@ class FileUpload extends FormWidgetBase
             $record = $this->getRelationObject()
                 ->withDeferred($this->sessionKey)
                 ->find(post('file_id')) ?: false;
+=======
+            $record = $this->getRelationModel()->find(post('file_id')) ?: false;
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         }
 
         return $record;
@@ -360,6 +390,7 @@ class FileUpload extends FormWidgetBase
     public function onSortAttachments(): void
     {
         if ($sortData = post('sortOrder')) {
+<<<<<<< HEAD
             // Only reorder files that actually belong to this widget's relation
             // (including the current deferred-binding session), never arbitrary
             // System\Models\File rows referenced by a posted id. See
@@ -379,6 +410,13 @@ class FileUpload extends FormWidgetBase
             $orders = array_values($sortData);
 
             $this->getRelationModel()->setSortableOrder($ids, $orders);
+=======
+            $ids = array_keys($sortData);
+            $orders = array_values($sortData);
+
+            $fileModel = $this->getRelationModel();
+            $fileModel->setSortableOrder($ids, $orders);
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         }
     }
 

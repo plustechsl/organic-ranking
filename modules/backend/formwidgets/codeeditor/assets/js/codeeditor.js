@@ -19,7 +19,10 @@ window.MonacoEnvironment = {
             'html': 'js/build/html.worker.js',
             'handlebars': 'js/build/html.worker.js',
             'razor': 'js/build/html.worker.js',
+<<<<<<< HEAD
             'twig': 'js/build/html.worker.js',
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
             'json': 'js/build/json.worker.js'
         };
 
@@ -43,7 +46,10 @@ window.MonacoEnvironment = {
 import constrainedEditor from 'constrained-editor-plugin';
 import { parse as parseXml } from 'fast-plist';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
+<<<<<<< HEAD
 import { registerHTMLLanguageService } from 'monaco-editor/esm/vs/language/html/monaco.contribution';
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
 // Fix: Twig tokenizer doesn't handle <script type="module"> (https://github.com/wintercms/winter/issues/1449)
 // Monaco's HTML tokenizer explicitly maps type="module" to text/javascript,
@@ -55,6 +61,7 @@ twigLanguage.tokenizer.scriptAfterTypeEquals.unshift(
     [/'module'/, { token: 'attribute.value.html', switchTo: '@scriptWithCustomType.text/javascript' }],
 );
 
+<<<<<<< HEAD
 // Register twig with the HTML language service for tag matching (<div> ↔ </div>).
 // Only documentHighlights is enabled — diagnostics/formatting disabled since the
 // HTML parser doesn't understand {% %} / {{ }} syntax.
@@ -73,6 +80,8 @@ registerHTMLLanguageService('twig', undefined, {
     documentRangeFormattingEdits: false,
 });
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 ((Snowboard) => {
     /**
      * Code editor widget.
@@ -112,7 +121,10 @@ registerHTMLLanguageService('twig', undefined, {
             this.cachedThemes = {};
             this.resizeThrottle = null;
             this.savedState = null;
+<<<<<<< HEAD
             this.dropHandlers = null;
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
             this.callbacks = {
                 fullScreenChange: () => this.onFullScreenChange(),
                 resize: () => {
@@ -207,11 +219,14 @@ registerHTMLLanguageService('twig', undefined, {
          */
         destruct() {
             this.dispose();
+<<<<<<< HEAD
             // If model survived dispose (preserved for reuse), clean it up now
             if (this.savedState && this.savedState.model) {
                 this.savedState.model.dispose();
                 this.savedState = null;
             }
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
             if (this.elementObserver) {
                 this.elementObserver.disconnect();
             }
@@ -234,8 +249,12 @@ registerHTMLLanguageService('twig', undefined, {
         dispose() {
             if (this.editor) {
                 this.savedState = {
+<<<<<<< HEAD
                     view: this.editor.saveViewState(),
                     model: this.model,
+=======
+                    position: this.editor.getPosition(),
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                 };
             }
             if (this.disposables.length > 0) {
@@ -248,6 +267,7 @@ registerHTMLLanguageService('twig', undefined, {
                 window.removeEventListener('resize', this.callbacks.resize);
                 this.resizeListener = false;
             }
+<<<<<<< HEAD
             if (this.dropHandlers) {
                 this.dropHandlers.editorDom.removeEventListener('dragover', this.dropHandlers.onDragOver);
                 this.dropHandlers.editorDom.removeEventListener('drop', this.dropHandlers.onDrop);
@@ -256,6 +276,12 @@ registerHTMLLanguageService('twig', undefined, {
             // The model was created externally via createModel(), so editor.dispose()
             // will NOT auto-dispose it — the undo stack is preserved for reuse
             this.model = null;
+=======
+            if (this.model) {
+                this.model.dispose();
+                this.model = null;
+            }
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
             if (this.editor) {
                 this.editor.dispose();
                 this.editor = null;
@@ -302,6 +328,7 @@ registerHTMLLanguageService('twig', undefined, {
             this.container.style.height = null;
             this.container.style.height = Math.round(Number(getComputedStyle(this.container).height.replace('px', ''))) + 'px';
 
+<<<<<<< HEAD
             const options = this.getConfigOptions();
 
             // Reuse preserved model (keeps undo stack) or create a new one externally.
@@ -317,6 +344,9 @@ registerHTMLLanguageService('twig', undefined, {
             }
 
             this.editor = monaco.editor.create(this.element.querySelector('.editor-container'), options);
+=======
+            this.editor = monaco.editor.create(this.element.querySelector('.editor-container'), this.getConfigOptions());
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
             // Backward compatibility: Set jQuery data for legacy Builder plugin code
             // Builder's JavaScript expects `.data('oc.codeEditor').editor` to access the editor
@@ -325,17 +355,29 @@ registerHTMLLanguageService('twig', undefined, {
             }
 
             this.attachListeners();
+<<<<<<< HEAD
             this.attachDropHandler();
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
             this.loadTheme();
             this.updateLanguage();
             this.enableStatusBarActions();
             this.registerKeyBindings();
+<<<<<<< HEAD
             this.registerDefaultKeyBindings();
 
             // Restore full view state (cursor, scroll, selections, folds) from before the editor was disposed
             if (this.savedState) {
                 if (this.savedState.view) {
                     this.editor.restoreViewState(this.savedState.view);
+=======
+
+            // Restore cursor position and scroll state from before the editor was disposed
+            if (this.savedState) {
+                if (this.savedState.position) {
+                    this.editor.setPosition(this.savedState.position);
+                    this.editor.revealPositionInCenter(this.savedState.position);
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                 }
                 this.savedState = null;
             }
@@ -377,7 +419,11 @@ registerHTMLLanguageService('twig', undefined, {
                 minimap: {
                     enabled: this.config.get('showMinimap'),
                 },
+<<<<<<< HEAD
                 occurrencesHighlight: this.config.get('showOccurrences') ? 'singleFile' : 'off',
+=======
+                occurrencesHighlight: this.config.get('showOccurrences'),
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                 quickSuggestions: this.config.get('showSuggestions'),
                 renderLineHighlight: this.getLineHighlightOption(),
                 renderWhitespace: this.config.get('showInvisibles') ? 'all' : 'selection',
@@ -397,6 +443,10 @@ registerHTMLLanguageService('twig', undefined, {
                     : false,
                 tabSize: this.config.get('tabSize'),
                 theme: this.config.get('themeVs'),
+<<<<<<< HEAD
+=======
+                value: this.valueBag.value,
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
             };
 
             if (this.config.get('wordWrap') === 'fluid') {
@@ -455,10 +505,13 @@ registerHTMLLanguageService('twig', undefined, {
          *  - A visibility change listener
          */
         attachListeners() {
+<<<<<<< HEAD
             // Prevent jQuery from capturing keyup events via event bubbling
             const editorNode = this.editor.getDomNode();
             editorNode.addEventListener('keyup', (e) => e.stopPropagation(), true);
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
             this.model = this.editor.getModel();
 
             this.disposables.push(this.model.onDidChangeContent(() => {
@@ -499,6 +552,7 @@ registerHTMLLanguageService('twig', undefined, {
         }
 
         /**
+<<<<<<< HEAD
          * Attaches drag-and-drop handlers so external text (e.g. partials, assets)
          * can be dropped into the editor.
          */
@@ -537,6 +591,8 @@ registerHTMLLanguageService('twig', undefined, {
         }
 
         /**
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
          * Sets an editor configuration value.
          *
          * @param {*} key
@@ -1021,6 +1077,7 @@ registerHTMLLanguageService('twig', undefined, {
         convertTmTheme(content) {
             const themeData = parseXml(content);
             const globalColors = this.mapGlobalColors(themeData.settings.shift().settings);
+<<<<<<< HEAD
 
             if (themeData.gutterSettings) {
                 if (themeData.gutterSettings.background) {
@@ -1031,6 +1088,8 @@ registerHTMLLanguageService('twig', undefined, {
                 }
             }
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
             const scopes = [
                 {
                     token: '',
@@ -1236,6 +1295,7 @@ registerHTMLLanguageService('twig', undefined, {
                 number: ['constant.numeric', 'constant.number', 'string.number'],
                 regexp: ['string.regexp'],
                 tag: ['meta.tag', 'entity.name.tag'],
+<<<<<<< HEAD
                 'tag.css': ['keyword'],
                 metatag: ['meta.tag', 'declaration.tag', 'constant.language', 'entity.name.tag'],
                 annotation: ['meta.embedded', 'meta.annotation', 'string.annotation', 'comment.block', 'comment.line'],
@@ -1245,6 +1305,15 @@ registerHTMLLanguageService('twig', undefined, {
                 operator: ['support.constant', 'constant.numeric', 'constant.number', 'string.number', 'support'],
                 'attribute.name': ['support.type', 'support.constant', 'entity.other.attribute-name', 'support.type.property-name'],
                 'attribute.name.html': ['entity.other.attribute-name.html', 'entity.other.attribute-name'],
+=======
+                metatag: ['meta.tag', 'declaration.tag', 'constant.language', 'entity.name.tag'],
+                annotation: ['meta.embedded', 'meta.annotation', 'string.annotation', 'comment.block', 'comment.line'],
+                attribute: ['entity.other.attribute-name', 'support.type.property-name'],
+                identifier: ['entity.name.function', 'meta.tag', 'declaration.tag', 'constant.language', 'entity.name.tag', 'support.type'],
+                type: ['support.type', 'support.function'],
+                operator: ['support.constant', 'constant.numeric', 'constant.number', 'string.number', 'support'],
+                'attribute.name': ['support.type', 'support.constant', 'entity.other.attribute-name', 'support.type.property-name'],
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                 'attribute.value.html': ['string.quoted.double.html', 'string.quoted.single.html', 'string.quoted.double', 'string.quoted.single', 'string'],
                 'attribute.value.unit': ['keyword.unit', 'support.unit', 'keyword', 'support', 'number', 'string.number', 'constant.numeric', 'constant.number'],
                 'attribute.value.number': ['number', 'string.number', 'constant.numeric', 'constant.number'],
@@ -1377,7 +1446,10 @@ registerHTMLLanguageService('twig', undefined, {
             }
             this.statusBar.style.color = foreground;
             this.statusBar.style.backgroundColor = background;
+<<<<<<< HEAD
             this.container.style.backgroundColor = background;
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         }
 
         /**
@@ -1635,6 +1707,7 @@ registerHTMLLanguageService('twig', undefined, {
             });
         }
 
+<<<<<<< HEAD
         /**
          * Registers default keybindings that replicate legacy Ace editor shortcuts.
          */
@@ -1693,6 +1766,8 @@ registerHTMLLanguageService('twig', undefined, {
             /* eslint-enable no-bitwise */
         }
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         checkEditorClick(event) {
             if (this.clickStartedInEditor && !this.element.contains(event.target)) {
                 event.stopImmediatePropagation();

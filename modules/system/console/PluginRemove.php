@@ -4,7 +4,10 @@ use File;
 use Winter\Storm\Console\Command;
 use System\Classes\UpdateManager;
 use System\Classes\PluginManager;
+<<<<<<< HEAD
 use System\Classes\VersionManager;
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
 /**
  * Console command to remove a plugin.
@@ -51,6 +54,7 @@ class PluginRemove extends Command
         $pluginName = $this->getPluginIdentifier();
         $pluginManager = PluginManager::instance();
 
+<<<<<<< HEAD
         if (
             !$pluginManager->hasPlugin($pluginName)
             && !VersionManager::instance()->getDatabaseHistory($pluginName)
@@ -59,6 +63,8 @@ class PluginRemove extends Command
             return 1;
         }
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         $confirmQuestion = sprintf('This will remove the files for the "%s" plugin.', $pluginName);
         if (!$this->option('no-rollback')) {
             $confirmQuestion = sprintf('This will remove the database tables and files for the "%s" plugin.', $pluginName);

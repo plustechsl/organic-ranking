@@ -1192,7 +1192,11 @@ class MediaManager extends WidgetBase
     /**
      * Returns thumbnail parameters
      */
+<<<<<<< HEAD
     protected function getThumbnailParams(?string $viewMode = null): array
+=======
+    protected function getThumbnailParams(string $viewMode = null): array
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     {
         $result = [
             'mode' => 'crop'
@@ -1316,7 +1320,11 @@ class MediaManager extends WidgetBase
      *
      * @todo Consider moving this into the File helper and accepting a $disk instance
      */
+<<<<<<< HEAD
     protected function deduplicatePath(string $path, ?string $suffix = null): string
+=======
+    protected function deduplicatePath(string $path, string $suffix = null): string
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     {
         $parts = pathinfo($path);
         $i = 1;

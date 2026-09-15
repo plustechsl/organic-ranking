@@ -7,7 +7,10 @@ use Cache;
 use Less_Parser;
 use Exception;
 use File as FileHelper;
+<<<<<<< HEAD
 use Winter\Storm\Parse\Assetic\Filter\LessImportResolver;
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
 /**
  * Mail brand settings
@@ -150,6 +153,7 @@ class MailBrandSetting extends Model
     public static function compileCss()
     {
         $parser = new Less_Parser(['compress' => true]);
+<<<<<<< HEAD
 
         // Refuse every @import directive. The bundled custom.less ships no imports
         // and the only user-controlled input here is CSS variable values via
@@ -168,6 +172,8 @@ class MailBrandSetting extends Model
         // deny-all gate, not by strip_tags.
         $parser->SetImportDirs(['' => LessImportResolver::makeResolver([], null)]);
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         $basePath = base_path('modules/system/models/mailbrandsetting');
 
         $parser->ModifyVars(static::makeCssVars());

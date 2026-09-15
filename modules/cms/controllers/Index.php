@@ -24,7 +24,10 @@ use Exception;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Request;
 use System\Helpers\DateTime;
+<<<<<<< HEAD
 use Winter\Storm\Auth\AuthorizationException;
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 use Winter\Storm\Exception\ApplicationException;
 use Winter\Storm\Halcyon\Datasource\DatasourceInterface;
 use Winter\Storm\Router\Router as StormRouter;
@@ -93,6 +96,7 @@ class Index extends Controller
 
             $this->theme = $theme;
 
+<<<<<<< HEAD
             if ($this->user?->hasAccess('cms.manage_pages')) {
                 new TemplateList($this, 'pageList', function () use ($theme) {
                     return Page::listInTheme($theme, true);
@@ -130,6 +134,27 @@ class Index extends Controller
             if ($this->user?->hasAccess('cms.manage_assets')) {
                 new AssetList($this, 'assetList');
             }
+=======
+            new TemplateList($this, 'pageList', function () use ($theme) {
+                return Page::listInTheme($theme, true);
+            });
+
+            new TemplateList($this, 'partialList', function () use ($theme) {
+                return Partial::listInTheme($theme, true);
+            });
+
+            new TemplateList($this, 'layoutList', function () use ($theme) {
+                return Layout::listInTheme($theme, true);
+            });
+
+            new TemplateList($this, 'contentList', function () use ($theme) {
+                return Content::listInTheme($theme, true);
+            });
+
+            new ComponentList($this, 'componentList');
+
+            new AssetList($this, 'assetList');
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         }
         catch (Exception $ex) {
             $this->handleError($ex);
@@ -167,8 +192,11 @@ class Index extends Controller
         $this->validateRequestTheme();
 
         $type = Request::input('type');
+<<<<<<< HEAD
         $this->validateRequestType($type);
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         $template = $this->loadTemplate($type, Request::input('path'));
         $widget = $this->makeTemplateFormWidget($type, $template);
 
@@ -200,10 +228,14 @@ class Index extends Controller
     public function onSave(): array
     {
         $this->validateRequestTheme();
+<<<<<<< HEAD
 
         $type = Request::input('templateType');
         $this->validateRequestType($type);
 
+=======
+        $type = Request::input('templateType');
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         $templatePath = trim(Request::input('templatePath'));
         $template = $templatePath ? $this->loadTemplate($type, $templatePath) : $this->createTemplate($type);
         $formWidget = $this->makeTemplateFormWidget($type, $template);
@@ -287,8 +319,11 @@ class Index extends Controller
     public function onCreateTemplate(): array
     {
         $type = Request::input('type');
+<<<<<<< HEAD
         $this->validateRequestType($type);
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         $template = $this->createTemplate($type);
 
         if ($type === 'asset') {
@@ -320,8 +355,11 @@ class Index extends Controller
         $this->validateRequestTheme();
 
         $type = Request::input('type');
+<<<<<<< HEAD
         $this->validateRequestType($type);
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         $templates = Request::input('template');
         $error = null;
         $deleted = [];
@@ -372,7 +410,10 @@ class Index extends Controller
         $this->validateRequestTheme();
 
         $type = Request::input('templateType');
+<<<<<<< HEAD
         $this->validateRequestType($type);
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
         $this->loadTemplate($type, trim(Request::input('templatePath')))->delete();
 
@@ -444,10 +485,14 @@ class Index extends Controller
     public function onCommit(): array
     {
         $this->validateRequestTheme();
+<<<<<<< HEAD
 
         $type = Request::input('templateType');
         $this->validateRequestType($type);
 
+=======
+        $type = Request::input('templateType');
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         $template = $this->loadTemplate($type, trim(Request::input('templatePath')));
 
         if ($this->canCommitTemplate($template)) {
@@ -471,10 +516,14 @@ class Index extends Controller
     public function onReset(): array
     {
         $this->validateRequestTheme();
+<<<<<<< HEAD
 
         $type = Request::input('templateType');
         $this->validateRequestType($type);
 
+=======
+        $type = Request::input('templateType');
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         $template = $this->loadTemplate($type, trim(Request::input('templatePath')));
 
         if ($this->canResetTemplate($template)) {
@@ -591,6 +640,7 @@ class Index extends Controller
     }
 
     /**
+<<<<<<< HEAD
      * Validates that the given request type is a valid type, and that the user has the relevant
      * permission to access it.
      *
@@ -623,6 +673,8 @@ class Index extends Controller
     }
 
     /**
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
      * Resolves a template type to its class name
      */
     protected function resolveTypeClassName(string $type): string
@@ -721,8 +773,11 @@ class Index extends Controller
      */
     protected function makeTemplateFormWidget(string $type, CmsObject|Asset $template, ?string $alias = null): Form
     {
+<<<<<<< HEAD
         $this->validateRequestType($type);
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         $formConfigs = [
             'page'    => '~/modules/cms/classes/page/fields.yaml',
             'partial' => '~/modules/cms/classes/partial/fields.yaml',
@@ -756,7 +811,11 @@ class Index extends Controller
         $codeField = ($template instanceof Asset) ? 'content' : 'markup';
 
         $lang = match ($ext) {
+<<<<<<< HEAD
             '', 'htm' => 'twig',
+=======
+            'htm' => 'twig',
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
             'html' => 'html',
             'css' => 'css',
             'js', 'json' => 'javascript',

@@ -161,9 +161,12 @@ return [
         'allow' => 'Allow',
         'inherit' => 'Inherit',
         'deny' => 'Deny',
+<<<<<<< HEAD
         'permissions_toggle_section_allow' => 'Allow every permission in this section',
         'permissions_toggle_section_inherit' => 'Inherit every permission in this section',
         'permissions_toggle_section_deny' => 'Deny every permission in this section',
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         'activated' => 'Activated',
         'last_login' => 'Last login',
         'created_at' => 'Created at',
@@ -171,7 +174,12 @@ return [
         'deleted_at' => 'Deleted at',
         'show_deleted' => 'Show deleted',
         'self_escalation_denied' => 'You cannot modify your own role, permissions, or superuser status.',
+<<<<<<< HEAD
         'cannot_manage_user' => 'You do not have permission to manage this administrator.',
+=======
+        'superuser_grant_denied' => 'Only superusers can grant superuser status or modify other superuser accounts.',
+        'manage_users_denied' => 'You do not have permission to manage other administrators.',
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         'throttle_tab' => 'Failed Logins',
         'throttle_tab_label' => 'Failed Login Records',
         'throttle_comment' => 'View failed login attempts for this user. These records are automatically generated when login attempts fail. Users are suspended after exceeding the attempt limit.',
@@ -236,7 +244,10 @@ return [
         'loading' => 'Loading...',
         'setup_title' => 'List setup',
         'setup_help' => 'Use checkboxes to select columns you want to see in the list. You can change position of columns by dragging them up or down.',
+<<<<<<< HEAD
         'sort_drag_title' => 'Drag to reorder',
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         'records_per_page' => 'Records per page',
         'records_per_page_help' => 'Select the number of records per page to display. Please note that high number of records on a single page can reduce performance.',
         'check' => 'Check',
@@ -615,8 +626,12 @@ return [
     ],
     'permissions' => [
         'manage_media' => 'Upload and manage media contents - images, videos, sounds, documents',
+<<<<<<< HEAD
         'allow_unsafe_markdown' => 'Allow unsafe Markdown',
         'allow_unsafe_markdown_comment' => 'Allowing unsafe Markdown will allow HTML tags, including JavaScript, in Markdown content. This can be a security risk if given to an untrusted user.',
+=======
+        'allow_unsafe_markdown' => 'Use unsafe Markdown (Can include Javascript)',
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     ],
     'mediafinder' => [
         'label' => 'Media Finder',

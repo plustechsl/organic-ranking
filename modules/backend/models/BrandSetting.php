@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Lang;
 use Less_Parser;
 use Winter\Storm\Database\Model;
+<<<<<<< HEAD
 use Winter\Storm\Parse\Assetic\Filter\LessImportResolver;
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 use Winter\Storm\Support\Facades\Config;
 use Winter\Storm\Support\Facades\File;
 use Winter\Storm\Support\Facades\Url;
@@ -196,12 +199,17 @@ class BrandSetting extends Model
             $customCss = '/* ' . e($ex->getMessage()) . ' */';
         }
 
+<<<<<<< HEAD
         return strip_tags($customCss);
+=======
+        return $customCss;
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     }
 
     public static function compileCss()
     {
         $parser = new Less_Parser(['compress' => true]);
+<<<<<<< HEAD
 
         // Refuse every @import directive. The bundled custom.less ships no imports
         // and the admin-supplied custom_css field has no legitimate use for them,
@@ -209,6 +217,8 @@ class BrandSetting extends Model
         // wikimedia/less.php raw-path fallback. See GHSA-58fp-mcx6-7qf9.
         $parser->SetImportDirs(['' => LessImportResolver::makeResolver([], null)]);
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         $basePath = base_path('modules/backend/models/brandsetting');
 
         $primaryColor = self::get('primary_color', self::PRIMARY_COLOR);

@@ -8,7 +8,10 @@ use Cms\Classes\Theme;
 use Config;
 use DMS\PHPUnitExtensions\ArraySubset\ArraySubsetAsserts;
 use Event;
+<<<<<<< HEAD
 use Storage;
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 use System\Classes\ImageResizer;
 use System\Classes\MediaLibrary;
 use System\Models\File as FileModel;
@@ -391,6 +394,7 @@ class ImageResizerTest extends PluginTestCase
         Config::set('cms.linkPolicy', 'detect');
         $url = $imageResizer->getResizerUrl();
         $this->assertTrue(starts_with($url, '/resizer/'));
+<<<<<<< HEAD
 
         // test dots' double-encoding
         // @see https://github.com/wintercms/winter/pull/1493
@@ -434,6 +438,8 @@ class ImageResizerTest extends PluginTestCase
 
         // Clean up the generated image
         Storage::disk('test_local')->deleteDirectory('resized');
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     }
 
     protected function setUpStorage()

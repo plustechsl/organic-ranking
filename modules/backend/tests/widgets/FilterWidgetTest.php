@@ -2,6 +2,7 @@
 
 namespace Backend\Tests\Widgets;
 
+<<<<<<< HEAD
 use ApplicationException;
 use Backend\Models\User;
 use Backend\Tests\Fixtures\Models\UserFixture;
@@ -15,6 +16,16 @@ class FilterWidgetTest extends PluginTestCase
     // Permission / scope restriction tests (existing)
     //
 
+=======
+use System\Tests\Bootstrap\PluginTestCase;
+use Backend\Tests\Fixtures\Models\UserFixture;
+use Backend\Widgets\Filter;
+use ApplicationException;
+use Backend\Models\User;
+
+class FilterWidgetTest extends PluginTestCase
+{
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     public function testRestrictedScopeWithUserWithNoPermissions()
     {
         $user = new UserFixture;
@@ -125,6 +136,7 @@ class FilterWidgetTest extends PluginTestCase
         $this->assertNotNull($filter->getScope('email'));
     }
 
+<<<<<<< HEAD
     //
     // numbersFromAjax() validation tests
     //
@@ -520,6 +532,8 @@ class FilterWidgetTest extends PluginTestCase
     // Helpers
     //
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     protected function restrictedFilterFixture(bool $singlePermission = false)
     {
         return new Filter(null, [
@@ -540,6 +554,7 @@ class FilterWidgetTest extends PluginTestCase
             ]
         ]);
     }
+<<<<<<< HEAD
 
     protected function createFilterWithScope(string $name, array $scopeConfig): Filter
     {
@@ -549,4 +564,6 @@ class FilterWidgetTest extends PluginTestCase
             'scopes' => [$name => $scopeConfig],
         ]);
     }
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 }

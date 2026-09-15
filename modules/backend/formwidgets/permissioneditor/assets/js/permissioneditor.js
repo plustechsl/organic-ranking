@@ -23,7 +23,11 @@
     // ============================
 
     PermissionEditor.prototype.onPermissionTypeClick = function (ev) {
+<<<<<<< HEAD
         var $rows = $(ev.target).closest('tr').nextUntil('tr.section')
+=======
+        var $rows = $(ev.target).closest('tr').nextAll()
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         var index = $(ev.target).index()
 
         var allChecked = true

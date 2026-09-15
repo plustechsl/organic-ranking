@@ -164,6 +164,7 @@
 
     /*
      * Refresh a dependancy field
+<<<<<<< HEAD
      * Uses a throttle to prevent duplicate calls and click spamming.
      *
      * The event parameter is passed automatically by jQuery as the third
@@ -187,6 +188,15 @@
         if (cascadeChain.indexOf(fieldName) !== -1) {
             return
         }
+=======
+     * Uses a throttle to prevent duplicate calls and click spamming
+     */
+    FormWidget.prototype.onRefreshDependants = function(fieldName, toRefresh) {
+        var self = this,
+            form = this.$el,
+            formEl = this.$form,
+            fieldElements = this.getFieldElements()
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
         if (this.dependantUpdateTimers[fieldName] !== undefined) {
             window.clearTimeout(this.dependantUpdateTimers[fieldName])
@@ -202,12 +212,17 @@
                 data: refreshData
             }).success(function() {
                 self.toggleEmptyTabs()
+<<<<<<< HEAD
 
                 var newChain = cascadeChain.concat([fieldName])
                 $.each(toRefresh.fields, function(key, field) {
                     var cascadeEvent = $.Event('change')
                     cascadeEvent.cascadeChain = newChain
                     $('[data-field-name="' + field + '"]').trigger(cascadeEvent)
+=======
+                $.each(toRefresh.fields, function(key, field) {
+                    $('[data-field-name="' + field + '"]').trigger('change')
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
                 })
             })
         }, this.dependantUpdateInterval)

@@ -4,6 +4,7 @@ namespace System\Twig;
 
 use Cms\Classes\Controller;
 use Cms\Classes\Theme;
+<<<<<<< HEAD
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\ConnectionResolverInterface;
@@ -17,25 +18,38 @@ use Illuminate\Session\SessionManager;
 use Illuminate\Support\Enumerable;
 use System\Twig\SecurityPolicy\SafeCollection;
 use System\Twig\SecurityPolicy\SafePaginator;
+=======
+use Illuminate\Database\Eloquent\Model as DbModel;
+use Illuminate\Session\SessionManager;
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 use Twig\Markup;
 use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Sandbox\SecurityNotAllowedMethodError;
 use Twig\Sandbox\SecurityNotAllowedPropertyError;
+<<<<<<< HEAD
 use Twig\Sandbox\SecurityPolicyInterface;
 use Twig\Template;
 use Winter\Storm\Halcyon\Builder as HalcyonBuilder;
+=======
+use Twig\Sandbox\SecurityNotAllowedTagError;
+use Twig\Sandbox\SecurityPolicyInterface;
+use Twig\Template;
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 use Winter\Storm\Halcyon\Datasource\DatasourceInterface;
 use Winter\Storm\Halcyon\Model as HalcyonModel;
 
 /**
  * SecurityPolicy globally blocks accessibility of certain methods and properties.
  *
+<<<<<<< HEAD
  * The policy is a blocklist, but it models the real PHP forwarding behaviour of the
  * database layer via $blockedForwarders: because `Model::__call` transparently forwards
  * to the Eloquent Builder, which forwards to the Query Builder, a method blocked on the
  * Query Builder is also blocked when reached through a Model, Eloquent Builder or Relation.
  * This is what makes the blocklist complete instead of a game of whack-a-mole.
  *
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
  * @package winter\wn-system-module
  * @author Alexey Bobkov, Samuel Georges, Luke Towers, Ben Thomson
  */
@@ -53,6 +67,7 @@ final class SecurityPolicy implements SecurityPolicyInterface
             'addDynamicMethod',
             'addDynamicProperty',
             'extendClassWith',
+<<<<<<< HEAD
             'implementClassWith',
             'getClassExtension',
             'extendableSet',
@@ -80,10 +95,22 @@ final class SecurityPolicy implements SecurityPolicyInterface
 
         // Prevent some controller methods. The controller is a fixed, known object; these
         // methods run nested page cycles, render arbitrary partials, or read files.
+=======
+            'getClassExtension',
+            'extendableSet',
+
+            // Prevent binding to events
+            'bindEvent',
+            'bindEventOnce',
+        ],
+
+        // Prevent some controller methods
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         Controller::class => [
             'runPage',
             'renderPage',
             'getLoader',
+<<<<<<< HEAD
             'run',
             'combineAssets',
             'renderPartial',
@@ -249,6 +276,22 @@ final class SecurityPolicy implements SecurityPolicyInterface
             'makeMany',
         ],
 
+=======
+        ],
+
+        // Prevent model data modification
+        DbModel::class => [
+            'fill',
+            'setAttribute',
+            'setRawAttributes',
+            'save',
+            'push',
+            'update',
+            'delete',
+            'forceDelete',
+            'getQuery',
+        ],
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         HalcyonModel::class => [
             'fill',
             'setAttribute',
@@ -261,6 +304,7 @@ final class SecurityPolicy implements SecurityPolicyInterface
             'delete',
             'forceDelete',
             'getQuery',
+<<<<<<< HEAD
             'getDatasource',
         ],
 
@@ -272,6 +316,9 @@ final class SecurityPolicy implements SecurityPolicyInterface
             'truncate',
         ],
 
+=======
+        ],
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         DatasourceInterface::class => [
             'insert',
             'update',
@@ -281,6 +328,7 @@ final class SecurityPolicy implements SecurityPolicyInterface
             'usingSource',
             'pushToSource',
             'removeFromSource',
+<<<<<<< HEAD
             'select',
             'selectOne',
         ],
@@ -291,10 +339,18 @@ final class SecurityPolicy implements SecurityPolicyInterface
             'getDatasource',
             'writeConfig',
             'removeCustomData',
+=======
+        ],
+        Theme::class => [
+            'setDirName',
+            'registerHalcyonDatasource',
+            'getDatasource'
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         ],
     ];
 
     /**
+<<<<<<< HEAD
      * @var array<string, string> Maps a class to the class its __call forwards to, so the
      * sandbox enforces the destination's blocklist for a method reached through the source.
      * The chain is walked transitively (Model -> Eloquent Builder -> Query Builder).
@@ -308,6 +364,9 @@ final class SecurityPolicy implements SecurityPolicyInterface
     /**
      * @var array<string, string[]> List of allowed methods, grouped by applicable instance.
      * An empty list denies every method on that type (deny-all lock).
+=======
+     * @var array<string, string[]> List of allowed methods, grouped by applicable instance.
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
      */
     protected $allowedMethods = [
         SessionManager::class => [
@@ -318,10 +377,13 @@ final class SecurityPolicy implements SecurityPolicyInterface
             'flush',
             'pull',
         ],
+<<<<<<< HEAD
         // Locked down entirely: no template legitimately calls raw database or event objects.
         ConnectionInterface::class => [],
         ConnectionResolverInterface::class => [],
         Dispatcher::class => [],
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     ];
 
     /**
@@ -334,6 +396,7 @@ final class SecurityPolicy implements SecurityPolicyInterface
     ];
 
     /**
+<<<<<<< HEAD
      * @var string[] Twig functions that are not allowed (info-disclosure surface).
      */
     protected $blockedFunctions = [
@@ -343,6 +406,8 @@ final class SecurityPolicy implements SecurityPolicyInterface
     ];
 
     /**
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
      * Constructor
      */
     public function __construct()
@@ -358,8 +423,11 @@ final class SecurityPolicy implements SecurityPolicyInterface
                 $this->{$property}[$type] = array_map('strtolower', $values);
             }
         }
+<<<<<<< HEAD
 
         $this->blockedFunctions = array_map('strtolower', $this->blockedFunctions);
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     }
 
     /**
@@ -368,15 +436,23 @@ final class SecurityPolicy implements SecurityPolicyInterface
      * @param array $tags Array of tags to be checked against the policy ['tag', 'tag2', 'etc']
      * @param array $filters Array of filters to be checked against the policy ['filter', 'filter2', 'etc']
      * @param array $functions Array of funtions to be checked against the policy ['function', 'function2', 'etc']
+<<<<<<< HEAD
+=======
+     * @throws SecurityNotAllowedTagError if a given tag is not allowed
+     * @throws SecurityNotAllowedFilterError if a given filter is not allowed
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
      * @throws SecurityNotAllowedFunctionError if a given function is not allowed
      */
     public function checkSecurity($tags, $filters, $functions): void
     {
+<<<<<<< HEAD
         foreach ($functions as $function) {
             if (in_array(strtolower($function), $this->blockedFunctions)) {
                 throw new SecurityNotAllowedFunctionError(sprintf('Function "%s" is not allowed.', $function), $function);
             }
         }
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     }
 
     /**
@@ -419,17 +495,31 @@ final class SecurityPolicy implements SecurityPolicyInterface
 
         $method = strtolower($method);
 
+<<<<<<< HEAD
         if (in_array($method, $this->blockedMethods['*'])) {
             $this->throwMethodError($obj, $method);
+=======
+        if (
+            in_array($method, $this->blockedMethods['*'])
+        ) {
+            $class = get_class($obj);
+            throw new SecurityNotAllowedMethodError(sprintf('Calling "%s" method on a "%s" object is blocked.', $method, $class), $class, $method);
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         }
 
         foreach ($this->allowedMethods as $type => $methods) {
             if ($obj instanceof $type && !in_array($method, $methods)) {
+<<<<<<< HEAD
                 $this->throwMethodError($obj, $method);
+=======
+                $class = get_class($obj);
+                throw new SecurityNotAllowedMethodError(sprintf('Calling "%s" method on a "%s" object is blocked.', $method, $class), $class, $method);
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
             }
         }
 
         foreach ($this->blockedMethods as $type => $methods) {
+<<<<<<< HEAD
             if ($type === '*') {
                 continue;
             }
@@ -487,5 +577,12 @@ final class SecurityPolicy implements SecurityPolicyInterface
     {
         $class = get_class($obj);
         throw new SecurityNotAllowedMethodError(sprintf('Calling "%s" method on a "%s" object is blocked.', $method, $class), $class, $method);
+=======
+            if ($obj instanceof $type && in_array($method, $methods)) {
+                $class = get_class($obj);
+                throw new SecurityNotAllowedMethodError(sprintf('Calling "%s" method on a "%s" object is blocked.', $method, $class), $class, $method);
+            }
+        }
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     }
 }

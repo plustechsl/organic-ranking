@@ -319,6 +319,7 @@ class Controller extends ControllerBase
          */
         elseif (
             ($handler = post('_handler')) &&
+<<<<<<< HEAD
             $this->verifyCsrfToken()
         ) {
             $this->validateHandlerName($handler);
@@ -329,6 +330,13 @@ class Controller extends ControllerBase
             ) {
                 $result = $handlerResponse;
             }
+=======
+            $this->verifyCsrfToken() &&
+            ($handlerResponse = $this->runAjaxHandler($handler)) &&
+            $handlerResponse !== true
+        ) {
+            $result = $handlerResponse;
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         }
 
         /*
@@ -482,6 +490,7 @@ class Controller extends ControllerBase
     }
 
     /**
+<<<<<<< HEAD
      * Validates the AJAX handler name follows the expected format.
      *
      * @throws \Winter\Storm\Exception\SystemException if the handler name is invalid
@@ -494,6 +503,8 @@ class Controller extends ControllerBase
     }
 
     /**
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
      * This method is used internally.
      * Invokes a controller event handler and loads the supplied partials.
      */
@@ -504,7 +515,13 @@ class Controller extends ControllerBase
                 /*
                  * Validate the handler name
                  */
+<<<<<<< HEAD
                 $this->validateHandlerName($handler);
+=======
+                if (!preg_match('/^(?:\w+\:{2})?on[A-Z]{1}[\w+]*$/', $handler)) {
+                    throw new SystemException(Lang::get('backend::lang.ajax_handler.invalid_name', ['name'=>$handler]));
+                }
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
                 /*
                  * Validate the handler partial list

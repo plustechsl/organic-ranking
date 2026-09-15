@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace Backend\Traits;
@@ -7,6 +8,15 @@ use Illuminate\Support\Facades\Lang;
 use Winter\Storm\Database\Model;
 use Winter\Storm\Database\Relations\Relation;
 use Winter\Storm\Exception\ApplicationException;
+=======
+<?php namespace Backend\Traits;
+
+use Lang;
+use ApplicationException;
+use Exception;
+use Winter\Storm\Database\Model;
+use Winter\Storm\Database\Relations\Relation;
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 
 /**
  * Form Model Widget Trait

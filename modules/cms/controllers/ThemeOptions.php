@@ -102,7 +102,11 @@ class ThemeOptions extends Controller
      * @param string $dirName
      * @return string
      */
+<<<<<<< HEAD
     protected function getDirName(?string $dirName = null)
+=======
+    protected function getDirName(string $dirName = null)
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     {
         /*
          * Only the active theme can be managed without this permission

@@ -3,9 +3,13 @@ $expanded = $showTree ? $this->isTreeNodeExpanded($record) : null;
 $childRecords = $showTree ? $record->getChildren() : null;
 $treeLevelClass = $showTree ? 'list-tree-level-'.$treeLevel : '';
 ?>
+<<<<<<< HEAD
 <tr class="<?= $treeLevelClass ?> <?= $this->getRowClass($record) ?>"
     data-record-id="<?= e($record->getKey()) ?>"
 >
+=======
+<tr class="<?= $treeLevelClass ?> <?= $this->getRowClass($record) ?>">
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     <?php if ($showCheckboxes): ?>
         <?= $this->makePartial('list_body_checkbox', ['record' => $record]) ?>
     <?php endif ?>
@@ -18,12 +22,15 @@ $treeLevelClass = $showTree ? 'list-tree-level-'.$treeLevel : '';
         ]) ?>
     <?php endif ?>
 
+<<<<<<< HEAD
     <?php if (!empty($sortable)): ?>
         <td class="list-cell-sort-handle nolink">
             <span class="list-sort-handle" title="<?= e(trans('backend::lang.list.sort_drag_title')) ?>"><i class="icon-bars"></i></span>
         </td>
     <?php endif ?>
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     <?php $index = $url = 0; foreach ($columns as $key => $column): ?>
         <?php $index++; ?>
         <td class="list-cell-index-<?= $index ?> list-cell-name-<?= $column->getName() ?> list-cell-type-<?= $column->type ?> <?= $column->clickable ? '' : 'nolink' ?> <?= $column->getAlignClass() ?> <?= $column->cssClass ?>">

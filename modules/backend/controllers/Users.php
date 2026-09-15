@@ -55,6 +55,13 @@ class Users extends Controller
     {
         parent::__construct();
 
+<<<<<<< HEAD
+=======
+        if ($this->action == 'myaccount') {
+            $this->requiredPermissions = null;
+        }
+
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         BackendMenu::setContext('Winter.System', 'system', 'users');
         SettingsManager::setContext('Winter.System', 'administrators');
     }
@@ -119,9 +126,15 @@ class Users extends Controller
      */
     public function update($recordId, $context = null)
     {
+<<<<<<< HEAD
         // Users cannot edit themselves, only use My Account
         if ($context != 'myaccount' && $recordId == $this->user->id) {
             return Backend::redirect('backend/myaccount');
+=======
+        // Users cannot edit themselves, only use My Settings
+        if ($context != 'myaccount' && $recordId == $this->user->id) {
+            return Backend::redirect('backend/users/myaccount');
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         }
 
         return $this->asExtension('FormController')->update($recordId, $context);
@@ -154,7 +167,11 @@ class Users extends Controller
 
         Flash::success(Lang::get('backend::lang.account.impersonate_success'));
 
+<<<<<<< HEAD
         return Backend::redirect('backend/myaccount');
+=======
+        return Backend::redirect('backend/users/myaccount');
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     }
 
     /**
@@ -172,11 +189,41 @@ class Users extends Controller
     }
 
     /**
+<<<<<<< HEAD
      * Backward compatibility redirect to the new MyAccount controller.
      */
     public function myaccount()
     {
         return Backend::redirect('backend/myaccount');
+=======
+     * My Settings controller
+     */
+    public function myaccount()
+    {
+        SettingsManager::setContext('Winter.Backend', 'myaccount');
+
+        $this->pageTitle = 'backend::lang.myaccount.menu_label';
+        return $this->update($this->user->id, 'myaccount');
+    }
+
+    /**
+     * Proxy update onSave event
+     */
+    public function myaccount_onSave()
+    {
+        $result = $this->asExtension('FormController')->update_onSave($this->user->id, 'myaccount');
+
+        /*
+         * If the password or login name has been updated, reauthenticate the user
+         */
+        $loginChanged = $this->user->login != post('User[login]');
+        $passwordChanged = strlen(post('User[password]'));
+        if ($loginChanged || $passwordChanged) {
+            BackendAuth::login($this->user->reload(), true);
+        }
+
+        return $result;
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     }
 
     /**

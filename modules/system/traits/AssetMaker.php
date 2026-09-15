@@ -73,6 +73,7 @@ trait AssetMaker
 
                 $result .= '<link' . $attributes . '>' . PHP_EOL;
             }
+<<<<<<< HEAD
 
             foreach ($this->assets['vite'] as $asset) {
                 $asset['attributes']['entrypoints'] = array_filter(
@@ -84,6 +85,8 @@ trait AssetMaker
                     $result .= Vite::tags($asset['attributes']['entrypoints'], $asset['path']);
                 }
             }
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
         }
 
         if ($type == null || $type == 'rss') {
@@ -113,6 +116,7 @@ trait AssetMaker
 
                 $result .= '<script' . $attributes . '></script>' . PHP_EOL;
             }
+<<<<<<< HEAD
 
             foreach ($this->assets['vite'] as $asset) {
                 $asset['attributes']['entrypoints'] = array_filter(
@@ -127,6 +131,11 @@ trait AssetMaker
         }
 
         if ($type == 'vite') {
+=======
+        }
+
+        if ($type == null || $type == 'vite') {
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
             foreach ($this->assets['vite'] as $asset) {
                 $result .= Vite::tags($asset['attributes']['entrypoints'], $asset['path']);
             }
@@ -480,6 +489,7 @@ trait AssetMaker
 
         return $sortedAssets;
     }
+<<<<<<< HEAD
 
     protected function getAssetType(string $asset): ?string
     {
@@ -492,4 +502,6 @@ trait AssetMaker
             default => null,
         };
     }
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
 }

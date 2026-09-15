@@ -303,6 +303,7 @@ class SecurityPolicyTest extends TestCase
         ');
     }
 
+<<<<<<< HEAD
     //
     // GHSA-8cfw-pcwh-v63w — bypasses of the CVE-2024-54149 patch, and adjacent vectors
     //
@@ -517,6 +518,8 @@ class SecurityPolicyTest extends TestCase
         $this->assertEquals('a!,b!', $result);
     }
 
+=======
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     protected function renderTwigInCmsController(string $source, array $vars = [])
     {
         $controller = new Controller();

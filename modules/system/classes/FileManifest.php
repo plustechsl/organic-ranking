@@ -54,7 +54,11 @@ class FileManifest
     /**
      * Constructor.
      */
+<<<<<<< HEAD
     public function __construct(?string $root = null, ?array $modules = null)
+=======
+    public function __construct(string $root = null, array $modules = null)
+>>>>>>> 190bfe4f015fba0e5e4bad42e53137f7de7ac2d8
     {
         $this->setRoot($root ?? base_path());
         $this->setModules($modules ?? Config::get('cms.loadModules', ['System', 'Backend', 'Cms']));
