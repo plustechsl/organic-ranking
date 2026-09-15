@@ -4,7 +4,7 @@ use Event;
 use Lang;
 use Backend;
 use System\Classes\PluginBase;
-use System\Classes\CombineLibrary;
+use System\Classes\CombineAssets;
 use Winter\Builder\Classes\StandardControlsRegistry;
 use Winter\Builder\Classes\StandardBehaviorsRegistry;
 use Illuminate\Support\Facades\Validator;
@@ -213,7 +213,7 @@ class Plugin extends PluginBase
         /*
          * Register asset bundles
          */
-        CombineLibrary::registerCallback(function ($combiner) {
+        CombineAssets::registerCallback(function ($combiner) {
             $combiner->registerBundle('$/winter/builder/assets/js/build.js');
         });
     }
